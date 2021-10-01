@@ -1,2 +1,2 @@
-Id Client�;Nom;Pr�nom;Age;Sexe;Adresse;Ville;Code Postal;T�l Port�;T�l Fixe� ;Mail�;
-1;Leclerc;Charles;25;H;78 rue de Cannel;Nice;83540;0787946325;0458769542;charlesleclerc@formula1.com;
+Id Agence;Id Client�;Nom;Pr�nom;Age;Sexe;Adresse;Ville;Code Postal;T�l Port�;T�l Fixe� ;Mail�;
+1;1;Leclerc;Charles;25;H;78 rue de Cannel;Nice;83540;0787946325;0458769542;charlesleclerc@formula1.com;
