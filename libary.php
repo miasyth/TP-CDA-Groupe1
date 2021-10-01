@@ -58,17 +58,13 @@ function add_compte($array=[]) { // ajoute un compte
 
     $array[$count][$i++]=($array[$count-1][$i])+1; // Id Compte
 
-    $array[$count][$i++]=readline("Entrez le nom de l'agence ");
+    $array[$count][$i++]=readline("Entrez le type de compte ");
 
-    $array[$count][$i++]=readline("Entrez l'adresse de l'agence ");
+    $array[$count][$i++]=readline("Un decouvert est il authorise? ");
 
-    $array[$count][$i++]=readline("Entrez la ville de l'agence ");
-
-    $array[$count][$i++]=readline("Entrez le code postal de l'agence ");
+    $array[$count][$i++]=readline("Entrez la solde de depart ");
 
     return $array;
 }
-
-echo("hello");
 
 ?>
