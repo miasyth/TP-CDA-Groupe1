@@ -17,7 +17,7 @@ function add_agence($array=[]) { // ajoute une agence
     return $array;
 }
 
-function add_client($array=[]) { // ajoute un client
+function add_client($array=[], $array2=[]) { // ajoute un client
     $count=count($array); //recupere le nombre de client 
     $i=0;
 
@@ -48,7 +48,7 @@ function add_client($array=[]) { // ajoute un client
     return $array;
 }
 
-function add_compte($array=[]) { // ajoute un compte
+function add_compte($array=[], $array2=[], $array3=[]) { // ajoute un compte
     $count=count($array); //recupere le nombre de comptes
     $i=0;
 
