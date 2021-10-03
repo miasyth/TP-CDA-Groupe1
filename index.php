@@ -1,6 +1,5 @@
 <?php
 
-require 'filereader.php';
 require 'libary.php';
 
 while (true) {
