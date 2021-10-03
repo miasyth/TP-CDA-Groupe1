@@ -1,5 +1,8 @@
 <?php
-require 'Libary.php';
+
+require 'filereader.php';
+require 'libary.php';
+
 while (true) {
     echo ("\n 1- Créer une agence." . 
         "\n 2- Crée un client." . 
