@@ -7,7 +7,7 @@ while (true) {
         "\n 4- Recherche de compte (numéro de compte)." . 
         "\n 5- Recherche de client (Nom, Numéro de compte,Identifiant de client)." . 
         "\n 6- Afficher la liste des comptes d'un client (Identifiant client)." .
-        "\n 7- Imprimer les infos client ( Indentifiant client)." .
+        "\n 7- Imprimer les infos client (Identifiant client)." .
         "\n 8- Quitter le programme.\n\n");
     $choixMenu = readline("\nVotre choix : ");
     echo ("\n");
