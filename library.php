@@ -119,13 +119,13 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
 
     $tableClient[$count][$i]=$x; // Id Agence
 
-    foreach($tableClient as $v){
-        if($tableClient[$v]){
-
+    foreach($tableClient as $v){ //recupere le dernier client de l'agence
+        if($tableClient[$v][0]==$x){
+            $y=$tableClient[$v][1];
         }
     }
 
-    $tableClient[$count][$i++]=($tableClient[$count-1][$i])+1; // Id Client
+    $tableClient[$count][$i++]=$y+1; // Id Client
 
     $tableClient[$count][$i++]=readline("Entrez le nom du client ");
 
@@ -154,6 +154,8 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
     $count=count($tableCompte); //recupere le nombre de comptes
     $i=0; // valeur outil
     $x=0; // valeur outil
+    $y=0; // valeur outil
+    $z=0; // valeur outil
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
@@ -196,6 +198,12 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
     }
 
     $tableCompte[$count][$i++]=$x; // Id Client
+
+    foreach($tableCompte as $v){ //recupere le dernier Compte du client
+        if($tableCompte[$v][0]==$x){
+            $y=$tableCompte[$v][2];
+        }
+    }
 
     $tableCompte[$count][$i++]=($tableCompte[$count-1][$i])+1; // Id Compte
 

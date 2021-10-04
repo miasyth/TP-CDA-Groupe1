@@ -1,4 +1,4 @@
 Id Agence;Id Client;Id Compte;Type;D�couvert;Solde
-1;1;1;Courant;0;"400,00 �"
-1;1;2;Livret A,0,"657,25 �"
-1;2;1;Plan �pargne Logement,0,"10�580,81 �"
+1;1;1;Courant;0;400;00 �
+1;1;2;Livret A;0;657;25 �
+1;2;1;Plan �pargne Logement;0;10�580;81 �
