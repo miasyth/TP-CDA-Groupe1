@@ -6,7 +6,7 @@ require "library.php";
 
 while (true) {
     echo ("\n 1- Créer une agence." . 
-        "\n 2- Crée un client." . 
+        "\n 2- Créer un client." . 
         "\n 3- Créer un compte bancaire." . 
         "\n 4- Recherche de compte (numéro de compte)." . 
         "\n 5- Recherche de client (Nom, Numéro de compte,Identifiant de client)." . 
