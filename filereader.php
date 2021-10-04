@@ -1,22 +1,31 @@
 <?PHP
-
-// Définir le chemin d'accès au fichier CSV
-$csv = readline("Veuillez indiquer quel fichier vous souhaitez afficher : agence.csv|client.csv|compte.csv ");
+$csv = "agence.csv" ;
 $tab = [];
 
 function read($csv){
     $file = fopen($csv, 'r');
     while (!feof($file) ) {
-        $line[] = fgetcsv($file, 1024, ";");
+        $line [] = fgetcsv($file, 1024, ";");
     }
     fclose($file);
     return $line;
 }
 
-$csv = read($csv);
-$tab [] = $csv;
 
-print_r($csv);
+$tab = read($csv);
 
+print_r($tab);
+
+
+function write($csv, $tab){
+    $file = fopen($csv, 'w');
+    foreach($tab as $valeur) {
+        fputcsv($file, $valeur, ";");
+        //print_r($valeur); 
+    }
+    fclose($file);
+}
+
+write($csv, $tab);
 
 ?>
