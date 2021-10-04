@@ -1,6 +1,6 @@
 <?php
 
-require 'filereader.php';
+//require 'filereader.php';
 
 /*
     1- Créer une agence. -- dans library.php
@@ -120,7 +120,9 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
     $tableClient[$count][$i]=$x; // Id Agence
 
     foreach($tableClient as $v){
-        
+        if($tableClient[$v]){
+
+        }
     }
 
     $tableClient[$count][$i++]=($tableClient[$count-1][$i])+1; // Id Client

@@ -1,6 +1,7 @@
 <?php
 
-require 'libary.php';
+require "library.php";
+
 
 while (true) {
     echo ("\n 1- Créer une agence." . 
@@ -19,22 +20,21 @@ while (true) {
     };
     switch ($choixMenu){
         case 8: 
-            echo(8);
             exit;
         case 1:
-            echo(1);
+            add_agence([]);
             break;
         case 2:
-            echo(2);
+            add_client([],[]);
             break;
         case 3:       
-            echo(3);
+            add_compte([],[],[]);
             break;
         case 4:
             echo(4);
             break;
         case 5:
-            echo(5);
+            echo(5) ;
             break;
         case 6:
             echo(6);
