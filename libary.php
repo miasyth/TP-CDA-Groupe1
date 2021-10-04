@@ -9,10 +9,10 @@ require 'filereader.php';
     4- Recherche de compte (numéro de compte).
     5- Recherche de client (Nom, Numéro de compte,Identifiant de client).
     6- Afficher la liste des comptes d'un client (Identifiant client).
-    7- Imprimer les infos client ( Identifiant client)
+    7- Imprimer les infos client (Identifiant client)
 */
 
-function feach1d($array=[]){   // affichage $array (1 dimension)
+function feach1d($array=[]){ // affichage $array (1 dimension)
     
     foreach($array as $key => $v){ // affiche toutes les valeurs de $array
         echo($key<count($array)-1) ? "|".$v : "|".$v."|" ;
@@ -79,8 +79,27 @@ function add_agence($tableAgence=[]) { // ajoute une agence
 function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
     $count=count($tableClient); //recupere le nombre de client 
     $i=0; // valeur outil
+    $x=0; // valeur outil
 
-    $tableClient[$count][$i]=($tableClient[$count-1][$i]); // Id Agence a retravailler
+    while(1){ // entre une agence et verifie qu'elle existe 
+
+        feach2d($tableAgence);
+    
+        $x=readline("Entrez le numero de votre agence ");
+
+        foreach($tableAgence as $v){
+            if($v==$x){
+                unset($v);
+                break 2;
+            }
+        }
+
+        echo("Cette agence n'existe pas. Veuillez reesayer.");
+
+        unset($v);
+    }
+
+    $tableClient[$count][$i]=$x; // Id Agence
 
     $tableClient[$count][$i++]=($tableClient[$count-1][$i])+1; // Id Client
 
@@ -110,16 +129,55 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
 function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajoute un compte
     $count=count($tableCompte); //recupere le nombre de comptes
     $i=0; // valeur outil
+    $x=0; // valeur outil
 
-    $tableCompte[$count][$i]=($tableCompte[$count-1][$i]); // Id Agence a retravailler
+    while(1){ // entre une agence et verifie qu'elle existe 
 
-    $tableCompte[$count][$i++]=($tableCompte[$count-1][$i]); // Id Client a retravailler
+        feach2d($tableAgence);
+    
+        $x=readline("Entrez le numero de votre agence ");
+
+        foreach($tableAgence as $v){
+            
+            if($v==$x){
+                unset($v);
+                break 2;
+            }
+        }
+        echo("Cette agence n'existe pas. Veuillez reesayer.");
+
+        unset($v);
+    }
+
+    $tableCompte[$count][$i]=$x; // Id Agence
+
+    $x=0;
+
+    while(1){ // entre un client et verifie qu'il existe 
+
+        feach2d($tableClient);
+    
+        $x=readline("Entrez le numero du client ");
+
+        foreach($tableClient as $v){
+            
+            if($v==$x){
+                unset($v);
+                break 2;
+            }
+        }
+        echo("Ce client n'existe pas. Veuillez reesayer.");
+
+        unset($v);
+    }
+
+    $tableCompte[$count][$i++]=$x; // Id Client
 
     $tableCompte[$count][$i++]=($tableCompte[$count-1][$i])+1; // Id Compte
 
     $tableCompte[$count][$i++]=readline("Entrez le type de compte ");
 
-    $tableCompte[$count][$i++]=readline("Un decouvert est il authorise? ");
+    $tableCompte[$count][$i++]=readline("Un decouvert est il authorise? (O/N) ");
 
     $tableCompte[$count][$i++]=readline("Entrez la solde de depart ");
 
