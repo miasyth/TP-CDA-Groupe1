@@ -83,6 +83,7 @@ function add_agence($tableAgence=[]) { // ajoute une agence
     //print_r($tableAgence);
 
     $tableAgence[$count][$i] = 45; // Id Agence
+    $tableAgence[$count][$i]=($tableAgence[$count-1][0])+1; // Id Agence
 
     $tableAgence[$count][$i++]=readline("Entrez le nom de l'agence ");
 
@@ -127,7 +128,13 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
         }
     }
 
+<<<<<<< HEAD
     $tableClient[$count][$i++]=($tableClient[$count-1][$i])+1; // Id Client
+=======
+    unset($v);
+
+    $tableClient[$count][$i++]=$y+1; // Id Client
+>>>>>>> 86fd8238b75be1bce6d073d0462eb79929e353b9
 
     $tableClient[$count][$i++]=readline("Entrez le nom du client ");
 
@@ -153,6 +160,7 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
 }
 
 function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajoute un compte
+    $tablebackup=$tableAgence;
     $count=count($tableCompte); //recupere le nombre de comptes
     $i=0; // valeur outil
     $x=0; // valeur outil
@@ -177,17 +185,15 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
 
     $tableCompte[$count][$i]=$x; // Id Agence
 
-    $x=0;
-
     while(1){ // entre un client et verifie qu'il existe 
 
         feach2d($tableClient);
     
-        $x=readline("Entrez le numero du client ");
+        $y=readline("Entrez le numero du client ");
 
         foreach($tableClient as $v){
             
-            if($v==$x){
+            if($v==$y){
                 unset($v);
                 break 2;
             }
@@ -197,8 +203,24 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
         unset($v);
     }
 
-    $tableCompte[$count][$i++]=$x; // Id Client
+    $tableCompte[$count][$i++]=$y; // Id Client
 
+<<<<<<< HEAD
+=======
+    foreach($tableCompte as $v){ //recupere le dernier Compte du client
+        if($tableCompte[$v][0]==$x && $tableCompte[$v][1]==$y){
+            $z=$tableCompte[$v][2];
+        }
+    }
+    
+    unset($v);
+
+    if($z>2){
+        echo("Ce client a deja le maximum de comptes possibles");
+        return $tablebackup;
+    }
+
+>>>>>>> 86fd8238b75be1bce6d073d0462eb79929e353b9
     $tableCompte[$count][$i++]=($tableCompte[$count-1][$i])+1; // Id Compte
 
     $tableCompte[$count][$i++]=readline("Entrez le type de compte ");
