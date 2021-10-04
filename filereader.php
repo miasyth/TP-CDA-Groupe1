@@ -1,4 +1,7 @@
 <?PHP
+
+require "library.php";
+
 $csv = "agence.csv" ;
 $tab = [];
 
@@ -14,7 +17,9 @@ function read($csv){
 
 $tab = read($csv);
 
-print_r($tab);
+//print_r($tab);
+
+$tab=add_agence($tab);
 
 
 function write($csv, $tab){
@@ -27,5 +32,6 @@ function write($csv, $tab){
 }
 
 write($csv, $tab);
+ 
 
 ?>
