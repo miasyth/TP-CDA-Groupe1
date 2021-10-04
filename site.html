@@ -5,24 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formuliare d'inscription client</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <body>
+        <style>p{color: #bebebe;}</style>
         <style>hr{
-          height: 8px;
+          height: 6px;
           background-color: dodgerblue;
           border:none
          } 
          </style>
      </body>
 </head>
-<body style="background-image: url('');">
+<body style="background-image: url('bradley-jasper-ybanez-a1xlQq3HoJ0-unsplash.jpg');">
     
-    <header><img class="rounded-circle" src="jievani-weerasinghe-NHRM1u4GD_A-unsplash.jpg"alt="Zumba" width="150"></header>
-    <center><img src="jonathan-cooper-0O2Pp6-mOkY-unsplash.jpg" width="500px"></center>
+    <header><img class="rounded-circle" src="jievani-weerasinghe-NHRM1u4GD_A-unsplash.jpg"alt="Zumba" width="50"></header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     
     <form action="#" method="post">
         
         
-        <div id="head"> Quelle est votre agence ?
+        <div id="head"> <center><h2>--Type d'agence--</h2></center>
             <select id='gMonth' onchange="show_city()">
                 <option selected value='0'>Choisissez votre Agence par rapport à votre ville</option>
                 <option value='1'>Lille</option>
@@ -42,22 +49,22 @@
         
         <!--Nom-->
         <hr>
-
+        <center><legend><h2>--Identité--</h2></legend></center>
         <div>
-            <label for="Nom">Nom ou de jeune fille :</label>
+            <label style="background-color: #bebebe;" for="Nom">Nom ou de jeune fille :</label>
             <input type="text" id="id" name="user_id">
         </div>
         
         <!--Prénom-->
         
         <div>
-            <label for="Prénom">Prénom :</label>
+            <label style="background-color:#bebebe;" for="Prénom">Prénom :</label>
             <input type="text" id="password" name="user_password">
         </div>
         
         <!--L'âge du client-->
         <div>
-            <label for="Age">Age :</label>
+            <label style="background-color:#bebebe;" for="Age">Age :</label>
             <input type="text" id="id" name="user_id">
         </div>
         
@@ -65,65 +72,71 @@
 
         <!--Sexe du Sexe-->
          <fieldset>
-            <legend>Sexe</legend>
+            <center><legend><h2>--Sexe--</h2></legend></center>
             <div>
                 <input type="radio" id="Homme" name="drone" value="Homme">
-                <label for="Homme">Homme</label>
+                <label style="background-color: #bebebe;" for="Homme">Homme</label>
             </div>
 
             <div>
                 <input type="radio" id="Femme" name="drone" value="Femme">
-                <label for="Femme">Femme</label>
+                <label style="background-color: #bebebe;" for="Femme">Femme</label>
             </div>
 
             <div>
                 <input type="radio" id="Autre" name="drone" value="Autre">
-                <label for="Autre">Autre</label>
+                <label style="background-color: #bebebe;" for="Autre">Autre</label>
             </div>
         </fieldset>
         
+        <br>
         <hr>
+        <br>
 
         <!--Adresse-->
-
+        <center><legend><h2>--Adresse--</h2></legend></center>
         <div>
-            <label for="Adresse">Adresse :</label>
+            <label style="background-color: #bebebe;" for="Adresse">Adresse :</label>
             <input type="text" id="id" name="user_id">
         </div>
         
         <!--Code Postal-->
         
         <div>
-            <label for="Code Postal">Code Postal :</label>
+            <label style="background-color: #bebebe;" for="Code Postal">Code Postal :</label>
             <input type="text" id="id" name="user_id">
         </div>
         
+        <br>
         <hr>
+        <br>
 
         <!--Portable-->
-        
+        <center><legend><h2>--Contact--</h2></legend></center>
         <div>
-            <label for="Port">Télephone portable :</label>
+            <label style="background-color: #bebebe;" for="Port">Télephone portable :</label>
             <input type="text" id="id" name="user_id">
         </div>
         
         <!--Fixe-->
         
         <div>
-            <label for="Fix">Télephone fix :</label>
+            <label style="background-color: #bebebe;" for="Fix">Télephone fix :</label>
             <input type="text" id="id" name="user_id">
         </div>
         
         <!--Mail-->
 
         <div>
-            <label for="Mail">Mail :</label>
+            <label style="background-color: #bebebe;" for="Mail">Mail :</label>
             <input type="text" id="id" name="user_id">
         </div>
         
         <!--Envoyer-->
-
+        
+        <br>
         <hr>
+        <br>
 
         <div>
             <button type="submit"> --Envoyer--
