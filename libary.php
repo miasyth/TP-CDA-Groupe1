@@ -107,23 +107,23 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
     return $tableClient;
 }
 
-function add_compte($array=[], $array2=[], $array3=[]) { // ajoute un compte
-    $count=count($array); //recupere le nombre de comptes
+function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajoute un compte
+    $count=count($tableCompte); //recupere le nombre de comptes
     $i=0; // valeur outil
 
-    $array[$count][$i]=($array[$count-1][$i]); // Id Agence a retravailler
+    $tableCompte[$count][$i]=($tableCompte[$count-1][$i]); // Id Agence a retravailler
 
-    $array[$count][$i++]=($array[$count-1][$i]); // Id Client a retravailler
+    $tableCompte[$count][$i++]=($tableCompte[$count-1][$i]); // Id Client a retravailler
 
-    $array[$count][$i++]=($array[$count-1][$i])+1; // Id Compte
+    $tableCompte[$count][$i++]=($tableCompte[$count-1][$i])+1; // Id Compte
 
-    $array[$count][$i++]=readline("Entrez le type de compte ");
+    $tableCompte[$count][$i++]=readline("Entrez le type de compte ");
 
-    $array[$count][$i++]=readline("Un decouvert est il authorise? ");
+    $tableCompte[$count][$i++]=readline("Un decouvert est il authorise? ");
 
-    $array[$count][$i++]=readline("Entrez la solde de depart ");
+    $tableCompte[$count][$i++]=readline("Entrez la solde de depart ");
 
-    return $array;
+    return $tableCompte;
 }
 
 ?>
