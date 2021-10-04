@@ -1,7 +1,8 @@
 <?php
 
 require "library.php";
-require "filereader.php";
+
+// fonction qui ouvre tous les csv 
 
 while (true) {
     echo ("\n 1- Créer une agence." . 
@@ -19,7 +20,8 @@ while (true) {
             echo ("\n");
     };
     switch ($choixMenu){
-        case 8: 
+        case 8:
+            // fonction qui ferme tous les csv 
             exit;
         case 1:
             add_agence([]);

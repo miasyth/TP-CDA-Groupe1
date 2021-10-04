@@ -1,7 +1,5 @@
 <?PHP
 
-require "library.php";
-
 $csv = "agence.csv" ;
 $tab = [];
 

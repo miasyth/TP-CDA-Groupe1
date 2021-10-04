@@ -1,6 +1,6 @@
 <?php
 
-//require 'filereader.php';
+require 'filereader.php';
 
 /*
     1- Créer une agence. -- dans library.php
@@ -11,7 +11,6 @@
     6- Afficher la liste des comptes d'un client (Identifiant client).
     7- Imprimer les infos client (Identifiant client)
 */
-
 
 function feach1d($array=[]){ // affichage $array (1 dimension)
     
@@ -80,7 +79,6 @@ function add_header($array=[], ){ // rajoute le header d'une table
 function add_agence($tableAgence=[]) { // ajoute une agence
     $count=count($tableAgence)-1; //recupere le nombre d'agences
     $i=0; // valeur outil
-    
 
     $tableAgence[$count][$i]=($tableAgence[$count-1][0])+1; // Id Agence
 
