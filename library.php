@@ -1,6 +1,6 @@
 <?php
 
-require 'filereader.php';
+//require 'filereader.php';
 
 /*
     1- Créer une agence. -- dans library.php
