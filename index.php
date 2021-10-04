@@ -20,7 +20,7 @@ while (true) {
     switch ($choixMenu){
         case 8: 
             echo(8);
-            break;
+            exit;
         case 1:
             echo(1);
             break;
