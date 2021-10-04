@@ -1,18 +1,12 @@
-.fte {
-    color:black;
-    background-color:white;
-    background-image:url(https://images.unsplash.com/photo-1571840615771-acc2e9f42641.png);
-    background-repeat:no-repeat;
-    }
 
-    hr{
+hr{
         height: 8px;
         background-color: dodgerblue;
         border:none
        } 
-       p {
+p {
         color: #bebebe;
       }
-      h2 {
+h2 {
           color: #bebebe;
       }
