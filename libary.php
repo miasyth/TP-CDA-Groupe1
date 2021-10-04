@@ -49,10 +49,27 @@ function feach3d($array=[]){ // affichage $array (3 dimensions)
     unset($v, $v2, $v3);
 }
 
+function get_header($array=[]){ // recupere le header d'une table
+    
+    $array=$array[0];
+
+    return $array;
+}
+
 function del_header($array=[]){ // supprime le header d'une table
     $count=count($array);
 
     for($i=0 ; $i<$count-1 ; $i++){ //decale toutes les valeures de $array vers la gauche
+        $array[$i]=$array[$i+1];
+    }
+    unset($array[$count-1]); // supprime la case restante a la fin d'$array
+    return $array;
+}
+
+function add_header($array=[], ){ // rajoute le header d'une table
+    $count=count($array);
+
+    for($i=$count-1 ; $i>0 ; $i--){ //decale toutes les valeures de $array vers la droite
         $array[$i]=$array[$i+1];
     }
     unset($array[$count-1]); // supprime la case restante a la fin d'$array
@@ -80,6 +97,7 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
     $count=count($tableClient); //recupere le nombre de client 
     $i=0; // valeur outil
     $x=0; // valeur outil
+    $y=0; // valeur outil
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
@@ -100,6 +118,10 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
     }
 
     $tableClient[$count][$i]=$x; // Id Agence
+
+    foreach($tableClient as $v){
+        
+    }
 
     $tableClient[$count][$i++]=($tableClient[$count-1][$i])+1; // Id Client
 
