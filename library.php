@@ -77,21 +77,18 @@ function add_header($array=[], ){ // rajoute le header d'une table
 }
 
 function add_agence($tableAgence=[]) { // ajoute une agence
-    $count=count($tableAgence)-1; //recupere le nombre d'agences
+    $count=count($tableAgence); //recupere le nombre d'agences
     $i=0; // valeur outil
 
-    //print_r($tableAgence);
-
-    $tableAgence[$count][$i] = 45; // Id Agence
     $tableAgence[$count][$i]=($tableAgence[$count-1][0])+1; // Id Agence
 
-    $tableAgence[$count][$i++]=readline("Entrez le nom de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez le nom de l'agence ");
 
-    $tableAgence[$count][$i++]=readline("Entrez l'adresse de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez l'adresse de l'agence ");
 
-    $tableAgence[$count][$i++]=readline("Entrez la ville de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez la ville de l'agence ");
 
-    $tableAgence[$count][$i++]=readline("Entrez le code postal de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez le code postal de l'agence ");
 
     return $tableAgence;
 }
@@ -122,39 +119,35 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
 
     $tableClient[$count][$i]=$x; // Id Agence
 
-    foreach($tableClient as $v){
-        if($tableClient[$v]){
-
+    foreach($tableClient as $v){ //recupere le dernier client de l'agence
+        if($tableClient[$v][0]==$x){
+            $y=$tableClient[$v][1];
         }
     }
 
-<<<<<<< HEAD
-    $tableClient[$count][$i++]=($tableClient[$count-1][$i])+1; // Id Client
-=======
     unset($v);
 
-    $tableClient[$count][$i++]=$y+1; // Id Client
->>>>>>> 86fd8238b75be1bce6d073d0462eb79929e353b9
+    $tableClient[$count][++$i]=$y+1; // Id Client
 
-    $tableClient[$count][$i++]=readline("Entrez le nom du client ");
+    $tableClient[$count][++$i]=readline("Entrez le nom du client ");
 
-    $tableClient[$count][$i++]=readline("Entrez le prenom du client ");
+    $tableClient[$count][++$i]=readline("Entrez le prenom du client ");
 
-    $tableClient[$count][$i++]=readline("Entrez l'age du client (en chiffres) ");
+    $tableClient[$count][++$i]=readline("Entrez l'age du client (en chiffres) ");
 
-    $tableClient[$count][$i++]=readline("Entrez le sexe du client (H/F) ");
+    $tableClient[$count][++$i]=readline("Entrez le sexe du client (H/F) ");
 
-    $tableClient[$count][$i++]=readline("Entrez l'adresse du client (numero et rue) ");
+    $tableClient[$count][++$i]=readline("Entrez l'adresse du client (numero et rue) ");
 
-    $tableClient[$count][$i++]=readline("Entrez la ville du client ");
+    $tableClient[$count][++$i]=readline("Entrez la ville du client ");
 
-    $tableClient[$count][$i++]=readline("Entrez le code postal du client ");
+    $tableClient[$count][++$i]=readline("Entrez le code postal du client ");
 
-    $tableClient[$count][$i++]=readline("Entrez le telephone portable du client ");
+    $tableClient[$count][++$i]=readline("Entrez le telephone portable du client ");
 
-    $tableClient[$count][$i++]=readline("Entrez le telephone fixe du client ");
+    $tableClient[$count][++$i]=readline("Entrez le telephone fixe du client ");
 
-    $tableClient[$count][$i++]=readline("Entrez l'adresse e-mail du client ");
+    $tableClient[$count][++$i]=readline("Entrez l'adresse e-mail du client ");
 
     return $tableClient;
 }
@@ -164,6 +157,8 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
     $count=count($tableCompte); //recupere le nombre de comptes
     $i=0; // valeur outil
     $x=0; // valeur outil
+    $y=0; // valeur outil
+    $z=0; // valeur outil
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
@@ -205,8 +200,6 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
 
     $tableCompte[$count][$i++]=$y; // Id Client
 
-<<<<<<< HEAD
-=======
     foreach($tableCompte as $v){ //recupere le dernier Compte du client
         if($tableCompte[$v][0]==$x && $tableCompte[$v][1]==$y){
             $z=$tableCompte[$v][2];
@@ -220,14 +213,13 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
         return $tablebackup;
     }
 
->>>>>>> 86fd8238b75be1bce6d073d0462eb79929e353b9
-    $tableCompte[$count][$i++]=($tableCompte[$count-1][$i])+1; // Id Compte
+    $tableCompte[$count][++$i]=($tableCompte[$count-1][$i])+1; // Id Compte
 
-    $tableCompte[$count][$i++]=readline("Entrez le type de compte ");
+    $tableCompte[$count][++$i]=readline("Entrez le type de compte ");
 
-    $tableCompte[$count][$i++]=readline("Un decouvert est il authorise? (O/N) ");
+    $tableCompte[$count][++$i]=readline("Un decouvert est il authorise? (O/N) ");
 
-    $tableCompte[$count][$i++]=readline("Entrez la solde de depart ");
+    $tableCompte[$count][++$i]=readline("Entrez la solde de depart ");
 
     return $tableCompte;
 }
