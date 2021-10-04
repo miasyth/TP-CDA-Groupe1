@@ -12,6 +12,7 @@
     7- Imprimer les infos client (Identifiant client)
 */
 
+
 function feach1d($array=[]){ // affichage $array (1 dimension)
     
     foreach($array as $key => $v){ // affiche toutes les valeurs de $array
@@ -77,8 +78,9 @@ function add_header($array=[], ){ // rajoute le header d'une table
 }
 
 function add_agence($tableAgence=[]) { // ajoute une agence
-    $count=count($tableAgence); //recupere le nombre d'agences
+    $count=count($tableAgence)-1; //recupere le nombre d'agences
     $i=0; // valeur outil
+    
 
     $tableAgence[$count][$i]=($tableAgence[$count-1][0])+1; // Id Agence
 

@@ -8,34 +8,29 @@ $tab = [];
 function read($csv){
     $file = fopen($csv, 'r');
     while (!feof($file) ) {
-        $line [] = fgetcsv($file, 1024, ";");
+        $line[] = fgetcsv($file, 1024, ";");
     }
     fclose($file);
     return $line;
 }
 
-
 $tab = read($csv);
 
-//print_r($tab);
 
 $tab=add_agence($tab);
 
-//print_r($tab);
-
 
 function write($csv, $tab){
-    echo("FONCTION \n");
-    print_r($tab);
     $file = fopen($csv, 'w');
     foreach($tab as $valeur) {
-        fputcsv($file, $valeur, ";");
+        if($valeur != null) {
+            fputcsv($file, $valeur, ";");
+        }
+        
         //print_r($valeur); 
     }
     fclose($file);
 }
 
 write($csv, $tab);
-
-
 ?>
