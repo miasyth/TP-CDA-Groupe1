@@ -63,6 +63,7 @@ function del_header($array=[]){ // supprime le header d'une table
         $array[$i]=$array[$i+1];
     }
     unset($array[$count-1]); // supprime la case restante a la fin d'$array
+    
     return $array;
 }
 
@@ -73,6 +74,7 @@ function add_header($array=[], ){ // rajoute le header d'une table
         $array[$i]=$array[$i+1];
     }
     unset($array[$count-1]); // supprime la case restante a la fin d'$array
+    
     return $array;
 }
 
@@ -80,7 +82,7 @@ function add_agence($tableAgence=[]) { // ajoute une agence
     $count=count($tableAgence)-1; //recupere le nombre d'agences
     $i=0; // valeur outil
 
-    $tableAgence[$count][$i]=($tableAgence[$count-1][0])+1; // Id Agence
+    $tableAgence[$count][$i]=isset($tableAgence[$count-1][0]) ? $tableAgence[$count-1][0]+1 : 0 ; // Id Agence
 
     $tableAgence[$count][++$i]=readline("Entrez le nom de l'agence ");
 
