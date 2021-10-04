@@ -21,8 +21,12 @@ $tab = read($csv);
 
 $tab=add_agence($tab);
 
+//print_r($tab);
+
 
 function write($csv, $tab){
+    echo("FONCTION \n");
+    print_r($tab);
     $file = fopen($csv, 'w');
     foreach($tab as $valeur) {
         fputcsv($file, $valeur, ";");
@@ -32,6 +36,6 @@ function write($csv, $tab){
 }
 
 write($csv, $tab);
- 
+
 
 ?>
