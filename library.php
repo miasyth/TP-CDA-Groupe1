@@ -163,7 +163,7 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
 function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajoute un compte
     $count=count($tableCompte)-1; // recupere le nombre de comptes
-    $tablebackup=$tableAgence; // backup en cas de compte en trop
+    $tablebackup=$tableCompte; // backup en cas de compte en trop
     $tableclient[]=$tableClient[0]; // liste des client de l'agence selectionnee
     $count=count($tableCompte)-1; // recupere le nombre de comptes
     $i=0; // valeur outil
@@ -292,7 +292,6 @@ function search_compte($tableCompte=[]){ // Recherche de compte
     foreach($tableCompte as $val){ // affiche le header et le compte recherche
         if($val[0]==$x && $val[1]==$y && $val[2]==$z){
             feach1d($tableCompte[0]);
-
             feach1d($val);
             break;
         }
@@ -319,7 +318,6 @@ function search_client($tableClient=[]){ // Recherche de client
                 foreach($tableClient as $val){ // affiche le header et le client recherche
                     if($val[2]==$x && $val[3]==$y){
                         feach1d($tableClient[0]);
-
                         feach1d($val);
                         break;
                     }
@@ -336,7 +334,6 @@ function search_client($tableClient=[]){ // Recherche de client
                 foreach($tableClient as $val){ // affiche le header et le client recherche
                     if($val[0]==$x && $val[1]==$y){
                         feach1d($tableClient[0]);
-
                         feach1d($val);
                         break;
                     }
@@ -367,7 +364,6 @@ function list_comptes($tableCompte=[]){ // Affiche la liste des comptes d'un cli
             if($z==0){
                 feach1d($tableCompte[0]);
             }
-
             feach1d($val);
             $z=1;
         }
