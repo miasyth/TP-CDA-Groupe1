@@ -2,6 +2,8 @@
 
 require "library.php";
 
+$bdd=opall([]);
+
 // fonction qui ouvre tous les csv 
 
 while (true) {
@@ -20,29 +22,30 @@ while (true) {
             echo ("\n");
     };
     switch ($choixMenu){
-        case 8:
+        case 8 :
+            clall($bdd);
             // fonction qui ferme tous les csv 
             exit;
         case 1:
-            add_agence([]);
+            add_agence($bdd[0]);
             break;
         case 2:
-            add_client([],[]);
+            add_client($bdd[1],$bdd[0]);
             break;
         case 3:       
-            add_compte([],[],[]);
+            add_compte($bdd[2],$bdd[1],$bdd[0]);
             break;
         case 4:
-            echo(4);
+            search_compte($bdd[2]);
             break;
         case 5:
-            echo(5) ;
+            search_client($bdd[1]) ;
             break;
         case 6:
-            echo(6);
+            list_comptes($bdd[2]);
             break;
         case 7:
-            echo(7);
+            imprClient($bdd[1],$bdd[2]);
             break;
     };
 }
