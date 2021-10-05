@@ -1,4 +1,8 @@
-Id Client;Id Compte ;Id Agence ;Type ;D�couvert ;Solde ;
-1;1;1;Courant;0;"400,00 �"
-2;1;2;Livret A,0,"657,25 �"
-3;1;3;Plan �pargne Logement,0,"10�580,81 �"
+"Id Agence";"Id Client";"Id Compte";Type;Découvert;Solde
+1;1;1;C;O;400
+1;1;2;A;O;657,25
+1;2;1;PEL;O;10580,81
+2;1;3;C;O;400
+1;2;2;A;O;657,25
+1;2;3;PEL;O;10580,81
+2;2;1;A;O;50000
