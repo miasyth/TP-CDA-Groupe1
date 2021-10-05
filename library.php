@@ -277,6 +277,8 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
     $tableCompte[$count][++$i]=readline("Entrez la solde de depart: ");
 
+    $tableCompte[count($tableCompte)]=null;
+
     return $tableCompte;
 }
 
