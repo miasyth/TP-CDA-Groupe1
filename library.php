@@ -55,13 +55,13 @@ function add_agence($tableAgence=[]){ // ajoute une agence
 
     $tableAgence[$count][$i]=($tableAgence[1][0]==1) ? $tableAgence[$count-1][0]+1 : 1 ; // Id Agence // ternaire gerant le cas ou il n'y a pas encore d'agence (On pars tous de zero...)
 
-    $tableAgence[$count][++$i]=readline("Entrez le nom de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez le nom de l'agence: ");
 
-    $tableAgence[$count][++$i]=readline("Entrez l'adresse de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez l'adresse de l'agence: ");
 
-    $tableAgence[$count][++$i]=readline("Entrez la ville de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez la ville de l'agence: ");
 
-    $tableAgence[$count][++$i]=readline("Entrez le code postal de l'agence ");
+    $tableAgence[$count][++$i]=readline("Entrez le code postal de l'agence: ");
 
     return $tableAgence;
 }
@@ -76,25 +76,29 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
         //feach2d($tableAgence);
     
-        $x=readline("Entrez le numero de votre agence ");
+        $x=readline("Entrez le numero de votre agence: ");
 
         foreach($tableAgence as $v){ // verifie l'existence de l'agence
-            if($v[0]==$x){
-                unset($v);
-                break 2;
+            if($v!=null){
+                if($v[0]==$x){
+                    unset($v);
+                    break 2;
+                }
             }
         }
 
         unset($v);
 
-        echo("Cette agence n'existe pas. Veuillez reesayer. \n");
+        echo("Cette agence n'existe pas. Veuillez reesayer. \n\n");
     }
 
     $tableClient[$count][$i]=$x; // Id Agence
 
     foreach($tableClient as $v){ // recupere le dernier numero de client de l'agence
-        if($tableClient[$v][0]==$x){
-            $y=$tableClient[$v][1];
+        if($v!=$tableClient[0] && $v!=$tableClient[$count]){
+            if($v[0]==$x){
+                $y=$v[1];
+            }
         }
     }
 
@@ -106,25 +110,27 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     $tableClient[$count][++$i]=$y+1; // Id Client
 
-    $tableClient[$count][++$i]=readline("Entrez le nom du client ");
+    $tableClient[$count][++$i]=readline("Entrez le nom du client: ");
 
-    $tableClient[$count][++$i]=readline("Entrez le prenom du client ");
+    $tableClient[$count][++$i]=readline("Entrez le prenom du client: ");
 
-    $tableClient[$count][++$i]=readline("Entrez la date de naissance du client (jj/mm/aaaa) ");
+    $tableClient[$count][++$i]=readline("Entrez la date de naissance du client (jj/mm/aaaa): ");
 
-    $tableClient[$count][++$i]=readline("Entrez le sexe du client (H/F) ");
+    $tableClient[$count][++$i]=readline("Entrez le sexe du client (H/F): ");
 
-    $tableClient[$count][++$i]=readline("Entrez l'adresse du client (numero et rue) ");
+    $tableClient[$count][++$i]=readline("Entrez l'adresse du client (numero et rue): ");
 
-    $tableClient[$count][++$i]=readline("Entrez la ville du client ");
+    $tableClient[$count][++$i]=readline("Entrez la ville du client: ");
 
-    $tableClient[$count][++$i]=readline("Entrez le code postal du client ");
+    $tableClient[$count][++$i]=readline("Entrez le code postal du client: ");
 
-    $tableClient[$count][++$i]=readline("Entrez le telephone portable du client ");
+    $tableClient[$count][++$i]=readline("Entrez le telephone portable du client: ");
 
-    $tableClient[$count][++$i]=readline("Entrez le telephone fixe du client ");
+    $tableClient[$count][++$i]=readline("Entrez le telephone fixe du client: ");
 
-    $tableClient[$count][++$i]=readline("Entrez l'adresse e-mail du client ");
+    $tableClient[$count][++$i]=readline("Entrez l'adresse e-mail du client: ");
+
+    feach1d($tableClient[$count]);
 
     return $tableClient;
 }
@@ -141,7 +147,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
         //feach2d($tableAgence);
     
-        $x=readline("Entrez le numero de votre agence ");
+        $x=readline("Entrez le numero de votre agence: ");
 
         foreach($tableAgence as $v){ // verifie l'existence de l'agence
             
@@ -161,7 +167,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
         //feach2d($tableClient);
     
-        $y=readline("Entrez le numero du client ");
+        $y=readline("Entrez le numero du client: ");
 
         foreach($tableClient as $v){ // verifie l'existence du client
             
@@ -178,8 +184,8 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
     $tableCompte[$count][$i++]=$y; // Id Client
 
     foreach($tableCompte as $v){ // recupere le dernier Compte du client
-        if($tableCompte[$v][0]==$x && $tableCompte[$v][1]==$y){
-            $z=$tableCompte[$v][2];
+        if($v[0]==$x && $v[1]==$y){
+            $z=$v[2];
         }
     }
     
@@ -196,11 +202,11 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
     $tableCompte[$count][++$i]=$z+1; // Id Compte
 
-    $tableCompte[$count][++$i]=readline("Entrez le type de compte ");
+    $tableCompte[$count][++$i]=readline("Entrez le type de compte: ");
 
-    $tableCompte[$count][++$i]=readline("Un decouvert est il authorise? (O/N) ");
+    $tableCompte[$count][++$i]=readline("Un decouvert est il authorise? (O/N): ");
 
-    $tableCompte[$count][++$i]=readline("Entrez la solde de depart ");
+    $tableCompte[$count][++$i]=readline("Entrez la solde de depart: ");
 
     return $tableCompte;
 }
@@ -210,9 +216,9 @@ function search_compte($tableCompte=[]){ // Recherche de compte
     $y=0; // valeur outil
     $z=0; // valeur outil
 
-    $x=readline("Entrez le numero de l'agence du client possedant le compte ");
-    $y=readline("Entrez le numero du client possedant le compte ");
-    $z=readline("Entrez le numero de compte ");
+    $x=readline("Entrez le numero de l'agence du client possedant le compte: ");
+    $y=readline("Entrez le numero du client possedant le compte: ");
+    $z=readline("Entrez le numero de compte: ");
 
     foreach($tableCompte as $val){ // affiche le header et le compte recherche
         if($val[0]==$x && $val[1]==$y && $val[2]==$z){
@@ -237,8 +243,8 @@ function search_client($tableClient=[]){ // Recherche de client
         switch ($z):
 
             case 1: // par nom
-                $x=readline("Entrez le nom du client");
-                $y=readline("Entrez le prenom du client");
+                $x=readline("Entrez le nom du client: ");
+                $y=readline("Entrez le prenom du client: ");
 
                 foreach($tableClient as $val){ // affiche le header et le client recherche
                     if($val[2]==$x && $val[3]==$y){
@@ -254,8 +260,8 @@ function search_client($tableClient=[]){ // Recherche de client
                 break 2;
 
             case 2: // par identifiant
-                $x=readline("Entrez le numero de l'agence du client ");
-                $y=readline("Entrez le numero du client ");
+                $x=readline("Entrez le numero de l'agence du client: ");
+                $y=readline("Entrez le numero du client: ");
         
                 foreach($tableClient as $val){ // affiche le header et le client recherche
                     if($val[0]==$x && $val[1]==$y){
@@ -270,7 +276,7 @@ function search_client($tableClient=[]){ // Recherche de client
                 break 2;
         
             default: // ^^
-                echo("Apprenez a lire... essayez avec 1 ou 2");
+                echo("Apprenez a lire... essayez avec 1 ou 2\n");
 
                 break;
 
@@ -283,8 +289,8 @@ function list_comptes($tableCompte=[]){ // Affiche la liste des comptes d'un cli
     $y=0; // valeur outil
     $z=0; // valeur outil
 
-    $x=readline("Entrez le numero de l'agence du client ");
-    $y=readline("Entrez le numero du client ");
+    $x=readline("Entrez le numero de l'agence du client: ");
+    $y=readline("Entrez le numero du client: ");
 
     foreach($tableCompte as $val){ // affiche le header et la liste des comptes appartenant a ce client
         if($val[0]==$x && $val[1]==$y){
@@ -306,8 +312,8 @@ function print_client($tableClient=[], $tableCompte=[]){
     $x=0; // valeur outil
     $y=0; // valeur outil
 
-    $x=readline("Entrez le numero de l'agence du client ");
-    $y=readline("Entrez le numero du client ");
+    $x=readline("Entrez le numero de l'agence du client: ");
+    $y=readline("Entrez le numero du client: ");
 
     foreach($tableClient as $val){ // recupere les infos du client recherche
         if($val[0]==$x && $val[1]==$y){
