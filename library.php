@@ -22,6 +22,22 @@ function feach1d($array=[]){ // affichage $array (1 dimension)
     echo("\n\n");
 }
 
+function hfeach1d($array=[],$array2=[]){ // affichage $array (1 dimension)
+
+    
+    foreach($array as $key => $v){ // affiche toutes les valeurs de $array
+        echo($key<count($array)-1) ? "|".$v : "|".$v."|" ;
+    }
+    unset($key, $v);
+
+    foreach($array2 as $key => $v){ // affiche toutes les valeurs de $array2
+        echo($key<count($array2)-1) ? "|".$v : "|".$v."|" ;
+    }
+    unset($key, $v);
+
+    echo("\n\n");
+}
+
 function feach2d($array=[]){ // affichage $array (2 dimensions)
     
     foreach($array as $v){ // affiche toutes les valeurs de $array
@@ -282,19 +298,78 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
     return $tableCompte;
 }
 
-function search_compte($tableCompte=[]){ // Recherche de compte
+function search_compte($tableAgence=[], $tableClient=[] , $tableCompte=[]){ // Recherche de compte
+    $tableclient[]=$tableClient[0]; // liste des client de l'agence selectionnee
+    $tablecompte[]=$tableCompte[0]; // liste des comptes du client selectionne
     $x=0; // valeur outil
     $y=0; // valeur outil
     $z=0; // valeur outil
 
-    $x=readline("Entrez le numero de l'agence du client possedant le compte: ");
-    $y=readline("Entrez le numero du client possedant le compte: ");
+    while(1){ // entre une agence et verifie qu'elle existe 
+
+        echo("Voici les agences:\n");
+        feach2dbis($tableAgence);
+    
+        $x=readline("Entrez le numero de votre agence: ");
+
+        foreach($tableAgence as $v){ // verifie l'existence de l'agence
+            if($v!=null){
+                if($v[0]==$x){
+                    unset($v);
+                    break 2;
+                }
+            }
+        }
+
+        unset($v);
+
+        echo("Cette agence n'existe pas. Veuillez reesayer. \n\n");
+
+    }
+
+    foreach($tableClient as $v){ // recupere la liste de clients de l'agence selectionnee
+        if($v!=null){
+            if($v[0]==$x){
+                $tableclient[]=$v;
+            }
+        }
+    }
+
+    while(1){ // entre un client et verifie qu'il existe 
+
+        echo("Voici les clients de cette agence:\n");
+        feach2d($tableclient);
+    
+        $y=readline("Entrez le numero du client: ");
+
+        foreach($tableClient as $v){ // verifie l'existence du client
+            if($v!=null){
+                if($v[1]==$y){
+                    unset($v);
+                    break 2;
+                }
+            }
+        }
+        echo("Ce client n'existe pas. Veuillez reesayer. \n\n");
+
+        unset($v);
+    }
+
+    foreach($tableCompte as $v){ // recupere la liste de clients de l'agence selectionnee
+        if($v!=null){
+            if($v[0]==$x){
+                $tablecompte[]=$v;
+            }
+        }
+    }
+
     $z=readline("Entrez le numero de compte: ");
+
+    echo("");
 
     foreach($tableCompte as $val){ // affiche le header et le compte recherche
         if($val[0]==$x && $val[1]==$y && $val[2]==$z){
-            feach1d($tableCompte[0]);
-            feach1d($val);
+            hfeach1d($tableCompte[0], $val);
             break;
         }
     }

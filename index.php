@@ -36,10 +36,10 @@ while (true) {
             $bdd[2]=add_compte($bdd[0],$bdd[1],$bdd[2]);
             break;
         case 4:
-            search_compte($bdd[2]);
+            search_compte($bdd[0],$bdd[1],$bdd[2]);
             break;
         case 5:
-            search_client($bdd[1]) ;
+            search_client($bdd[1]);
             break;
         case 6:
             list_comptes($bdd[2]);
