@@ -50,10 +50,11 @@ function feach3d($array=[]){ // affichage $array (3 dimensions)
 }
 
 function get_header($array=[]){ // recupere le header d'une table
-    
-    $array=$array[0];
+    $header=[];
 
-    return $array;
+    $header=$array[0];
+
+    return $header;
 }
 
 function del_header($array=[]){ // supprime le header d'une table
@@ -67,7 +68,7 @@ function del_header($array=[]){ // supprime le header d'une table
     return $array;
 }
 
-function add_header($array=[], ){ // rajoute le header d'une table
+function add_header($array=[], $header=[]){ // rajoute le header d'une table
     $count=count($array);
 
     for($i=$count-1 ; $i>0 ; $i--){ //decale toutes les valeures de $array vers la droite
@@ -75,6 +76,8 @@ function add_header($array=[], ){ // rajoute le header d'une table
     }
     unset($array[$count-1]); // supprime la case restante a la fin d'$array
     
+    $array[0]=$header;
+
     return $array;
 }
 
@@ -82,7 +85,7 @@ function add_agence($tableAgence=[]) { // ajoute une agence
     $count=count($tableAgence)-1; //recupere le nombre d'agences
     $i=0; // valeur outil
 
-    $tableAgence[$count][$i]=isset($tableAgence[$count-1][0]) ? $tableAgence[$count-1][0]+1 : 0 ; // Id Agence
+    $tableAgence[$count][$i]=($tableAgence[1][0]==1) ? $tableAgence[$count-1][0]+1 : 1 ; // Id Agence
 
     $tableAgence[$count][++$i]=readline("Entrez le nom de l'agence ");
 
@@ -96,10 +99,10 @@ function add_agence($tableAgence=[]) { // ajoute une agence
 }
 
 function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
-    $count=count($tableClient); //recupere le nombre de client 
+    $count=count($tableClient)-1; //recupere le nombre de clients
     $i=0; // valeur outil
     $x=0; // valeur outil
-    $y=0; // valeur outil
+    $y=-1; // valeur outil
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
@@ -108,26 +111,30 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
         $x=readline("Entrez le numero de votre agence ");
 
         foreach($tableAgence as $v){
-            if($v==$x){
+            if($v[0]==$x){
                 unset($v);
                 break 2;
             }
         }
 
-        echo("Cette agence n'existe pas. Veuillez reesayer.");
-
         unset($v);
+
+        echo("Cette agence n'existe pas. Veuillez reesayer. \n");
     }
 
     $tableClient[$count][$i]=$x; // Id Agence
 
-    foreach($tableClient as $v){ //recupere le dernier client de l'agence
+    foreach($tableClient as $v){ //recupere le dernier numero de client de l'agence
         if($tableClient[$v][0]==$x){
             $y=$tableClient[$v][1];
         }
     }
 
     unset($v);
+
+    if($y==-1){
+        $y=0;
+    }
 
     $tableClient[$count][++$i]=$y+1; // Id Client
 
@@ -156,11 +163,11 @@ function add_client($tableAgence=[], $tableClient=[]) { // ajoute un client
 
 function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajoute un compte
     $tablebackup=$tableAgence;
-    $count=count($tableCompte); //recupere le nombre de comptes
+    $count=count($tableCompte)-1; //recupere le nombre de comptes
     $i=0; // valeur outil
     $x=0; // valeur outil
     $y=0; // valeur outil
-    $z=0; // valeur outil
+    $z=-1; // valeur outil
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
@@ -170,12 +177,12 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
 
         foreach($tableAgence as $v){
             
-            if($v==$x){
+            if($v[0]==$x){
                 unset($v);
                 break 2;
             }
         }
-        echo("Cette agence n'existe pas. Veuillez reesayer.");
+        echo("Cette agence n'existe pas. Veuillez reesayer. \n");
 
         unset($v);
     }
@@ -190,12 +197,12 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
 
         foreach($tableClient as $v){
             
-            if($v==$y){
+            if($v[1]==$y){
                 unset($v);
                 break 2;
             }
         }
-        echo("Ce client n'existe pas. Veuillez reesayer.");
+        echo("Ce client n'existe pas. Veuillez reesayer. \n");
 
         unset($v);
     }
@@ -211,11 +218,13 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]) { // ajou
     unset($v);
 
     if($z>2){
-        echo("Ce client a deja le maximum de comptes possibles");
+        echo("Desole, ce client a deja le maximum de comptes possibles \n");
         return $tablebackup;
+    } else if($z==-1){
+        $z=0;
     }
 
-    $tableCompte[$count][++$i]=($tableCompte[$count-1][$i])+1; // Id Compte
+    $tableCompte[$count][++$i]=$z+1; // Id Compte
 
     $tableCompte[$count][++$i]=readline("Entrez le type de compte ");
 
