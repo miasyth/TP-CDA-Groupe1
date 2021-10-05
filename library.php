@@ -228,7 +228,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
         unset($v);
     }
 
-    $tableCompte[$count][$i++]=$y; // Id Client
+    $tableCompte[$count][++$i]=$y; // Id Client
 
     foreach($tableCompte as $v){ // recupere le dernier Compte du client
         if($v!=$tableCompte[0] && $v!=$tableCompte[$count]){
