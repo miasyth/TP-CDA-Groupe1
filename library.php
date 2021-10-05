@@ -35,6 +35,22 @@ function feach2d($array=[]){ // affichage $array (2 dimensions)
     echo("\n");
 }
 
+function feach2dbis($array=[]){ // affichage $array (2 dimensions) en ignorant la derniere ligne (a utiliser pour les CSV)
+    $count=count($array)-1;
+    
+    foreach($array as $v){ // affiche toutes les valeurs de $array
+        if($v!=$array[$count]){
+            foreach($v as $v2){
+                echo("|".$v2);
+            }
+            echo("|\n");
+        }
+    }
+    unset($v, $v2);
+
+    echo("\n");
+}
+
 function feach3d($array=[]){ // affichage $array (3 dimensions)
     
     foreach($array as $v){ // affiche toutes les valeurs de $array
@@ -69,12 +85,14 @@ function add_agence($tableAgence=[]){ // ajoute une agence
 function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
     $count=count($tableClient)-1; // recupere le nombre de clients
     $i=0; // valeur outil
-    $x=0; // valeur outil
-    $y=-1; // valeur outil
+    $x=0; // choix agence
+    $y=-1; // numero client, auto-attribue
+    $c="A"; // confirmation
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
-        //feach2d($tableAgence);
+        echo("Voici des agences:\n");
+        feach2dbis($tableAgence);
     
         $x=readline("Entrez le numero de votre agence: ");
 
@@ -116,7 +134,17 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     $tableClient[$count][++$i]=readline("Entrez la date de naissance du client (jj/mm/aaaa): ");
 
-    $tableClient[$count][++$i]=readline("Entrez le sexe du client (H/F): ");
+    // module conf sex
+    $c=readline("Entrez le sexe du client (H/F): ");
+
+    while($c!='H' && $c!='F'){ // si $c est different de "H" et "F" redemande a l'utilisateur de rentrer une valeur correcte
+        $c=readline('vous avez entre un mauvais caractere, veuillez entrer "H" ou "F" ');
+    }
+
+    $tableClient[$count][++$i]=$c;
+    
+    $c="A";
+    //
 
     $tableClient[$count][++$i]=readline("Entrez l'adresse du client (numero et rue): ");
 
@@ -130,53 +158,72 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     $tableClient[$count][++$i]=readline("Entrez l'adresse e-mail du client: ");
 
-    feach1d($tableClient[$count]);
-
     return $tableClient;
 }
 
 function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajoute un compte
+    $count=count($tableCompte)-1; // recupere le nombre de comptes
     $tablebackup=$tableAgence; // backup en cas de compte en trop
+    $tableclient[]=$tableClient[0]; // liste des client de l'agence selectionnee
     $count=count($tableCompte)-1; // recupere le nombre de comptes
     $i=0; // valeur outil
-    $x=0; // valeur outil
-    $y=0; // valeur outil
-    $z=-1; // valeur outil
+    $x=0; // choix agence
+    $y=0; // choix client
+    $z=-1; // numero compte, auto-attribue
+    $c="A"; // confirmation
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
-        //feach2d($tableAgence);
+        echo("Voici des agences:\n");
+        feach2dbis($tableAgence);
     
         $x=readline("Entrez le numero de votre agence: ");
 
         foreach($tableAgence as $v){ // verifie l'existence de l'agence
-            
-            if($v[0]==$x){
-                unset($v);
-                break 2;
+            if($v!=null){
+                if($v[0]==$x){
+                    unset($v);
+                    break 2;
+                }
             }
         }
-        echo("Cette agence n'existe pas. Veuillez reesayer. \n");
 
         unset($v);
+
+        echo("Cette agence n'existe pas. Veuillez reesayer. \n\n");
+
     }
+
+    echo("\n");
 
     $tableCompte[$count][$i]=$x; // Id Agence
 
+    foreach($tableClient as $v){ // recupere la liste de clients de l'agence selectionnee
+        if($v!=null){
+            if($v[0]==$x){
+                $tableclient[]=$v;
+            }
+        }
+    }
+
+    unset($v);
+
     while(1){ // entre un client et verifie qu'il existe 
 
-        //feach2d($tableClient);
+        echo("Voici les clients de cette agence:\n");
+        feach2d($tableclient);
     
         $y=readline("Entrez le numero du client: ");
 
         foreach($tableClient as $v){ // verifie l'existence du client
-            
-            if($v[1]==$y){
-                unset($v);
-                break 2;
+            if($v!=null){
+                if($v[1]==$y){
+                    unset($v);
+                    break 2;
+                }
             }
         }
-        echo("Ce client n'existe pas. Veuillez reesayer. \n");
+        echo("Ce client n'existe pas. Veuillez reesayer. \n\n");
 
         unset($v);
     }
@@ -184,8 +231,10 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
     $tableCompte[$count][$i++]=$y; // Id Client
 
     foreach($tableCompte as $v){ // recupere le dernier Compte du client
-        if($v[0]==$x && $v[1]==$y){
-            $z=$v[2];
+        if($v!=$tableCompte[0] && $v!=$tableCompte[$count]){
+            if($v[0]==$x && $v[1]==$y){
+                $z=$v[2];
+            }
         }
     }
     
@@ -202,9 +251,29 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
     $tableCompte[$count][++$i]=$z+1; // Id Compte
 
-    $tableCompte[$count][++$i]=readline("Entrez le type de compte: ");
+    // module conf type
+    $c=readline("Entrez le type de compte (C=Courant, A=Livret A, PEL=Plan Epargne Logement): ");
 
-    $tableCompte[$count][++$i]=readline("Un decouvert est il authorise? (O/N): ");
+    while($c!='C' && $c!='A' && $c!="PEL"){ // si $c est different de "C" et "A" et "PEL" redemande a l'utilisateur de rentrer une valeur correcte
+        $c=readline('vous avez entre un mauvais caractere, veuillez entrer "C" ou "A" ou "PEL" ');
+    }
+
+    $tableCompte[$count][++$i]=$c;
+    
+    $c="A";
+    //
+
+    // module conf decouvert
+    $c=readline("Un decouvert est il authorise? (O/N): ");
+
+    while($c!='O' && $c!='N'){ // si $c est different de "C" et "A" et "PEL" redemande a l'utilisateur de rentrer une valeur correcte
+        $c=readline('vous avez entre un mauvais caractere, veuillez entrer "O" ou "N" ');
+    }
+
+    $tableCompte[$count][++$i]=$c;
+    
+    $c="A";
+    //    
 
     $tableCompte[$count][++$i]=readline("Entrez la solde de depart: ");
 
@@ -237,9 +306,10 @@ function search_client($tableClient=[]){ // Recherche de client
     $y=0; // valeur outil
     $z=0; // valeur outil
 
-    $z=readline("souhaitez vous chercher un client par rapport a son nom (1) ou a son identifiant client (2)? ");
-
     while(1){
+    
+        $z=readline("souhaitez vous chercher un client par rapport a son nom (1) ou a son identifiant client (2)? ");
+
         switch ($z):
 
             case 1: // par nom
@@ -276,7 +346,7 @@ function search_client($tableClient=[]){ // Recherche de client
                 break 2;
         
             default: // ^^
-                echo("Apprenez a lire... essayez avec 1 ou 2\n");
+                echo("re-essayez avec les option proposee...\n");
 
                 break;
 
