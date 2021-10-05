@@ -1,8 +1,5 @@
 <?PHP
 
-$csv = "agence.csv" ;
-$tab = [];
-
 function read($csv){
     $file = fopen($csv, 'r');
     while (!feof($file) ) {
@@ -11,11 +8,6 @@ function read($csv){
     fclose($file);
     return $line;
 }
-
-$tab = read($csv);
-
-
-$tab=add_agence($tab);
 
 
 function write($csv, $tab){
@@ -29,6 +21,4 @@ function write($csv, $tab){
     }
     fclose($file);
 }
-
-write($csv, $tab);
 ?>
