@@ -609,8 +609,16 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
 
 }
 
-function sall($tableClient=[], $tableCompte=[]){
+function sall($array=[]){
 
+    for($i=1 ; $i<count($array[1]) ; $i++){
+        for($j=1 ; $j<count($array[1]) ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[1][$i][0]>$array[1][$j][0] && $i<$j) ? $x=$array[1][$i][0] and $array[1][$i][0]=$array[1][$j][0] and $array[1][$j][0]=$x : null ;
+        }
+    }
+
+    return $array;
 }
 
 function opall(){ // ouvre tous les fichiers CSV et les place dans un tableau
