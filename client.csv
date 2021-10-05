@@ -1,2 +1,2 @@
-"Id Agence";"Id Clients";Nom;Prénom;Date de naissance;Sexe;Adresse;Ville;"Code Postal";"Tél Port";"Tél Fixe ";Mail
+"Id Agence";"Id Clients";Nom;Prénom;"Date de naissance";Sexe;Adresse;Ville;"Code Postal";"Tél Port";"Tél Fixe ";Mail
 1;1;Leclerc;Charles;25/12/1998;H;"78 rue de Cannel";Nice;83540;0787946325;0458769542;charlesleclerc@formula1.com

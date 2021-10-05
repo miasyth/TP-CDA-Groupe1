@@ -27,13 +27,13 @@ while (true) {
             // fonction qui ferme tous les csv 
             exit;
         case 1:
-            add_agence($bdd[0]);
+            $bdd[0]=add_agence($bdd[0]);
             break;
         case 2:
-            add_client($bdd[1],$bdd[0]);
+            $bdd[1]=add_client($bdd[1],$bdd[0]);
             break;
         case 3:       
-            add_compte($bdd[2],$bdd[1],$bdd[0]);
+            $bdd[2]=add_compte($bdd[2],$bdd[1],$bdd[0]);
             break;
         case 4:
             search_compte($bdd[2]);
