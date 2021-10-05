@@ -30,10 +30,10 @@ while (true) {
             $bdd[0]=add_agence($bdd[0]);
             break;
         case 2:
-            $bdd[1]=add_client($bdd[1],$bdd[0]);
+            $bdd[1]=add_client($bdd[0],$bdd[1]);
             break;
         case 3:       
-            $bdd[2]=add_compte($bdd[2],$bdd[1],$bdd[0]);
+            $bdd[2]=add_compte($bdd[0],$bdd[1],$bdd[2]);
             break;
         case 4:
             search_compte($bdd[2]);
