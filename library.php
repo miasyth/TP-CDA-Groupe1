@@ -300,7 +300,7 @@ function list_comptes($tableCompte=[]){ // Affiche la liste des comptes d'un cli
     unset($val);
 }
 
-function imprClient($tableClient=[], $tableCompte=[]){
+function print_Client($tableClient=[], $tableCompte=[]){
     $tClient=[];
     $x=0;
     $y=0;
@@ -308,7 +308,7 @@ function imprClient($tableClient=[], $tableCompte=[]){
     $x=readline("Entrez le numero de l'agence du client ");
     $y=readline("Entrez le numero du client ");
 
-    foreach($tableClient as $val){ // affiche le header et le client recherche
+    foreach($tableClient as $val){ // recupere les infos du client recherche
         if($val[0]==$x && $val[1]==$y){
             $tClient=$val;
             break;
