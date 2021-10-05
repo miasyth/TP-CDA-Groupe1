@@ -45,7 +45,7 @@ while (true) {
             list_comptes($bdd[2]);
             break;
         case 7:
-            imprClient($bdd[1],$bdd[2]);
+            print_client($bdd[1],$bdd[2]);
             break;
     };
 }
