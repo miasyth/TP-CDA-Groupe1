@@ -123,10 +123,10 @@ function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle e
     }
 }
 
-function check_client($tableClient=[], $tableclient=[]){
+function check_client($tableclient=[]){ // entre un client et verifie qu'il existe 
     $i=0; // verifie l'existence d'un element
 
-    while(1){ // entre un client et verifie qu'il existe 
+    while(1){
 
         echo("Voici les clients de cette agence:\n\n");
         feach2d($tableclient);
@@ -156,10 +156,10 @@ function check_client($tableClient=[], $tableclient=[]){
     }
 }
 
-function check_compte($tableCompte=[], $tablecompte=[]){
+function check_compte($tablecompte=[]){ // entre un compte et verifie qu'il existe 
     $i=0; // verifie l'existence d'un element
 
-    while(1){ // entre un compte et verifie qu'il existe 
+    while(1){
 
         echo("Voici les comptes de ce client:\n\n");
         feach2d($tablecompte);
@@ -300,7 +300,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
     unset($v);
 
-    $y=check_client($tableClient, $tableclient);
+    $y=check_client($tableclient);
 
     if($y==null){
         return $tablebackup;
@@ -381,7 +381,7 @@ function search_compte($tableAgence=[], $tableClient=[] , $tableCompte=[]){ // R
         }
     }
 
-    $y=check_client($tableClient, $tableclient);
+    $y=check_client($tableclient);
 
     if($y==null){
         return;
@@ -396,7 +396,7 @@ function search_compte($tableAgence=[], $tableClient=[] , $tableCompte=[]){ // R
         }
     }
 
-    $z=check_compte($tableCompte, $tablecompte);
+    $z=check_compte($tablecompte);
 
     if($z==null){
         return;
@@ -466,7 +466,7 @@ function search_client($tableAgence=[], $tableClient=[]){ // Recherche de client
                     }
                 }
 
-                $y=check_client($tableClient, $tableclient);
+                $y=check_client($tableclient);
 
                 if($y==null){
                     return;
@@ -515,7 +515,7 @@ function list_comptes($tableAgence=[], $tableClient=[] , $tableCompte=[]){ // Af
         }
     }
 
-    $y=check_client($tableClient, $tableclient);
+    $y=check_client($tableclient);
 
     if($y==null){
         return;
@@ -554,7 +554,7 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
         }
     }
 
-    $y=check_client($tableClient, $tableclient);
+    $y=check_client($tableclient);
 
     if($y==null){
         return;
@@ -606,6 +606,10 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
     }
 
     unset($v);
+
+}
+
+function sall($tableClient=[], $tableCompte=[]){
 
 }
 
