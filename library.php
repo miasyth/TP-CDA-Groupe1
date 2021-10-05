@@ -74,7 +74,7 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
-        feach2d($tableAgence);
+        //feach2d($tableAgence);
     
         $x=readline("Entrez le numero de votre agence ");
 
@@ -110,7 +110,7 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     $tableClient[$count][++$i]=readline("Entrez le prenom du client ");
 
-    $tableClient[$count][++$i]=readline("Entrez l'age du client (en chiffres) ");
+    $tableClient[$count][++$i]=readline("Entrez la date de naissance du client (jj/mm/aaaa) ");
 
     $tableClient[$count][++$i]=readline("Entrez le sexe du client (H/F) ");
 
@@ -139,7 +139,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
     while(1){ // entre une agence et verifie qu'elle existe 
 
-        feach2d($tableAgence);
+        //feach2d($tableAgence);
     
         $x=readline("Entrez le numero de votre agence ");
 
@@ -159,7 +159,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
     while(1){ // entre un client et verifie qu'il existe 
 
-        feach2d($tableClient);
+        //feach2d($tableClient);
     
         $y=readline("Entrez le numero du client ");
 
@@ -300,27 +300,51 @@ function list_comptes($tableCompte=[]){ // Affiche la liste des comptes d'un cli
     unset($val);
 }
 
-function print_Client($tableClient=[], $tableCompte=[]){
-    $tClient=[];
-    $x=0;
-    $y=0;
+function print_client($tableClient=[], $tableCompte=[]){
+    $tclient=[]; // valeur outil
+    $tcomptes=[]; // tableau avec les comptes du client
+    $x=0; // valeur outil
+    $y=0; // valeur outil
 
     $x=readline("Entrez le numero de l'agence du client ");
     $y=readline("Entrez le numero du client ");
 
     foreach($tableClient as $val){ // recupere les infos du client recherche
         if($val[0]==$x && $val[1]==$y){
-            $tClient=$val;
+            $tclient=$val;
             break;
         }
     }
 
     unset($val);
 
+    foreach($tableCompte as $val){ // recupere les comptes du client recherche
+        if($val[0]==$x && $val[1]==$y){
+            $tcompte[]=$val;
+        }
+    }
+
+    echo("Fiche CLient\n\n");
+
+    echo("Numero client: ".$tclient[0].$tclient[1]."\n");
+    echo("Nom: ".$tclient[2]."\n");
+    echo("Prenom: ".$tclient[3]."\n");
+    echo("Date de naissance: ".$tclient[4]."\n");
+
+    echo("\n----------------------------------------------------------------------------------------------------\n");
+
+    echo("Liste de comptes");
+
+    echo("\n----------------------------------------------------------------------------------------------------\n");
+
+
+
+    echo("\n----------------------------------------------------------------------------------------------------\n");
+    unset($val);
+
 }
 
 function opall(){ // ouvre tous les fichiers CSV et les place dans un tableau
-    
     $array=[];
 
     $array[0]=read('agence.csv');
