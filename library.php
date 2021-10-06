@@ -592,7 +592,7 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){ // aff
 
     unset($val);
 
-    echo("\nFiche CLient\n\n");
+    echo("\nFiche Client\n\n");
 
     echo("Numero client: ".$tclient[0].$tclient[1]."\n");
     echo("Nom: ".$tclient[2]."\n");
