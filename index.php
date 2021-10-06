@@ -4,8 +4,6 @@ require "library.php";
 
 $bdd=opall([]);
 
-// fonction qui ouvre tous les csv 
-
 while (true) {
     echo ("\n 1- Créer une agence." . 
         "\n 2- Créer un client." . 
@@ -23,8 +21,8 @@ while (true) {
     };
     switch ($choixMenu){
         case 8 :
+            $bdd=sall($bdd);
             clall($bdd);
-            // fonction qui ferme tous les csv 
             exit;
         case 1:
             $bdd[0]=add_agence($bdd[0]);

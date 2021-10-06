@@ -88,8 +88,21 @@ function feach3d($array=[]){ // affichage $array (3 dimensions)
 
 function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle existe 
     $i=0; // verifie l'existence d'un element
-    
-    while(1){ 
+
+    foreach($tableAgence as $v){ // verifie l'existence de l'agence
+        if($v!=null){
+            if($v!=$tableAgence[0]){
+                $i++;
+            }
+        }
+    }
+
+    if($i==0){ // verifie si une agence existe
+        echo("Aucune agence n'est repertorie actuellement...\n");
+        return;
+    }
+
+    while(1){ // entre une agence
 
         echo("Voici les agences:\n");
         feach2dbis($tableAgence);
@@ -103,22 +116,12 @@ function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle e
                     $i=0;
                     return $x;
                 }
-                if($v!=$tableAgence[0]){
-                    $i++;
-                }
             }
         }
 
         unset($v);
-
         
-
-        if($i==0){ // verifie si une agence existe
-            echo("Aucune agence n'est repertorie actuellement...\n");
-            return null;
-        } else{
-            echo("Cette agence n'existe pas. Veuillez reesayer.\n\n");
-        }
+        echo("Cette agence n'existe pas. Veuillez reesayer.\n\n");
 
     }
 }
@@ -126,7 +129,20 @@ function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle e
 function check_client($tableclient=[]){ // entre un client et verifie qu'il existe 
     $i=0; // verifie l'existence d'un element
 
-    while(1){
+    foreach($tableclient as $v){ // verifie l'existence du client
+        if($v!=null){
+            if($v!=$tableclient[0]){
+                $i++;
+            }
+        }
+    }
+
+    if($i==0){ // verifie si un client pour l'agence selectionnee existe
+        echo("Aucun client n'est repertorie actuellement pour cette agence...\n");
+        return;
+    }
+
+    while(1){ // entre un client
 
         echo("Voici les clients de cette agence:\n\n");
         feach2d($tableclient);
@@ -140,24 +156,30 @@ function check_client($tableclient=[]){ // entre un client et verifie qu'il exis
                     $i=0;
                     return $y;
                 }
-                if($v!=$tableclient[0]){
-                    $i++;
-                }
             }
         }
 
         unset($v);
 
-        if($i==0){ // verifie si un client pour l'agence selectionnee existe
-            echo("Aucun client n'est repertorie actuellement pour cette agence...\n");
-            return;
-        }
         echo("Ce client n'existe pas. Veuillez reesayer.\n\n");
     }
 }
 
 function check_compte($tablecompte=[]){ // entre un compte et verifie qu'il existe 
     $i=0; // verifie l'existence d'un element
+
+    foreach($tablecompte as $v){ // verifie l'existence du compte
+        if($v!=null){
+            if($v!=$tablecompte[0]){
+                $i++;
+            }
+        }
+    }
+
+    if($i==0){ // verifie si un compte pour le client selectionne existe
+        echo("Aucun compte n'est repertorie actuellement pour ce client...\n");
+        return;
+    }
 
     while(1){
 
@@ -168,23 +190,16 @@ function check_compte($tablecompte=[]){ // entre un compte et verifie qu'il exis
 
         foreach($tablecompte as $v){ // verifie l'existence du compte
             if($v!=null){
-                if($v[1]==$z){
+                if($v[2]==$z){
                     unset($v);
                     $i=0;
                     return $z;
-                }
-                if($v!=$tablecompte[0]){
-                    $i++;
                 }
             }
         }
 
         unset($v);
 
-        if($i==0){ // verifie si un compte pour le client selectionne existe
-            echo("Aucun compte n'est repertorie actuellement pour ce client...\n");
-            return;
-        }
         echo("Ce compte n'existe pas. Veuillez reesayer.\n\n");
     }
 }
@@ -533,7 +548,7 @@ function list_comptes($tableAgence=[], $tableClient=[] , $tableCompte=[]){ // Af
     feach2d($tablecompte);
 }
 
-function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
+function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){ // affiche des infos client avec la liste de ses comptes
     $tableclient[]=$tableClient[0]; // liste des client de l'agence selectionnee
     $tablecompte=[]; // liste des comptes du client selectionne
     $tclient[]=$tableClient[0]; // infos du client
@@ -597,7 +612,7 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
     foreach($tablecompte as $v){
 
         echo($v[0].$v[1].$v[2]);
-        echo("                                  |".$v[5]);
+        echo("                                  |".$v[5]." euros");
         if($v[5]>0){
            echo("                                  :-)\n");
         } else {
@@ -609,8 +624,54 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
 
 }
 
-function sall($tableClient=[], $tableCompte=[]){
+function sall($array=[]){ // range dans l'ordre les tableaux
 
+    // Table Agence (normalement inutile)
+    for($i=1 ; $i<count($array[0])-1 ; $i++){ // Trie par Id Agence (normalement inutile)
+        for($j=1 ; $j<count($array[0])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[0][$i][0]>$array[0][$j][0] && $i<$j) ? $x=$array[0][$i] and $array[0][$i]=$array[0][$j] and $array[0][$j]=$x : null ;
+        }
+    }
+
+    // Table Client
+    for($i=1 ; $i<count($array[1])-1 ; $i++){ // Trie par Id Agence
+        for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[1][$i][0]>$array[1][$j][0] && $i<$j) ? $x=$array[1][$i] and $array[1][$i]=$array[1][$j] and $array[1][$j]=$x : null ;
+        }
+    }
+
+    for($i=1 ; $i<count($array[1])-1 ; $i++){ // Trie par Id Client (normalement inutile)
+        for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[1][$i][1]>$array[1][$j][1] && $array[1][$i][0]==$array[1][$j][0] && $i<$j) ? $x=$array[1][$i] and $array[1][$i]=$array[1][$j] and $array[1][$j]=$x : null ;
+        }
+    }
+
+    // Table Compte
+    for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Agence
+        for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[2][$i][0]>$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
+        }
+    }
+
+    for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Client
+        for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[2][$i][1]>$array[2][$j][1] && $array[2][$i][0]==$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
+        }
+    }
+
+    for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Compte (normalement inutile)
+        for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[2][$i][2]>$array[2][$j][2] && $array[2][$i][1]==$array[2][$j][1] && $array[2][$i][0]==$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
+        }
+    }
+
+    return $array;
 }
 
 function opall(){ // ouvre tous les fichiers CSV et les place dans un tableau
