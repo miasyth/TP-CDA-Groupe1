@@ -13,7 +13,7 @@ require 'filereader.php';
 */
 
 function feach1d($array=[]){ // affichage $array (1 dimension)
-    
+
     foreach($array as $key => $v){ // affiche toutes les valeurs de $array
         echo($key<count($array)-1) ? "|".$v : "|".$v."|" ;
     }
