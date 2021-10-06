@@ -612,7 +612,7 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){ // aff
     foreach($tablecompte as $v){
 
         echo($v[0].$v[1].$v[2]);
-        echo("                                  |".$v[5]);
+        echo("                                  |".$v[5]." euros");
         if($v[5]>0){
            echo("                                  :-)\n");
         } else {
