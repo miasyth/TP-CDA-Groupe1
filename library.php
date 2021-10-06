@@ -533,7 +533,7 @@ function list_comptes($tableAgence=[], $tableClient=[] , $tableCompte=[]){ // Af
     feach2d($tablecompte);
 }
 
-function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
+function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){ // affiche des infos client avec la liste de ses comptes
     $tableclient[]=$tableClient[0]; // liste des client de l'agence selectionnee
     $tablecompte=[]; // liste des comptes du client selectionne
     $tclient[]=$tableClient[0]; // infos du client
@@ -609,19 +609,50 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
 
 }
 
-function sall($array=[]){
+function sall($array=[]){ // range dans l'ordre les tableaux
 
-    for($i=1 ; $i<count($array[1])-1 ; $i++){
+    // Table Agence (normalement inutile)
+    for($i=1 ; $i<count($array[0])-1 ; $i++){ // Trie par Id Agence (normalement inutile)
+        for($j=1 ; $j<count($array[0])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[0][$i][0]>$array[0][$j][0] && $i<$j) ? $x=$array[0][$i] and $array[0][$i]=$array[0][$j] and $array[0][$j]=$x : null ;
+        }
+    }
+
+    // Table Client
+    for($i=1 ; $i<count($array[1])-1 ; $i++){ // Trie par Id Agence
         for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
             $x=0;
             ($array[1][$i][0]>$array[1][$j][0] && $i<$j) ? $x=$array[1][$i] and $array[1][$i]=$array[1][$j] and $array[1][$j]=$x : null ;
         }
     }
 
-    for($i=1 ; $i<count($array[2])-1 ; $i++){
+    for($i=1 ; $i<count($array[1])-1 ; $i++){ // Trie par Id Client (normalement inutile)
+        for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[1][$i][1]>$array[1][$j][1] && $array[1][$i][0]==$array[1][$j][0] && $i<$j) ? $x=$array[1][$i] and $array[1][$i]=$array[1][$j] and $array[1][$j]=$x : null ;
+        }
+    }
+
+    // Table Compte
+    for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Agence
         for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
             $x=0;
             ($array[2][$i][0]>$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
+        }
+    }
+
+    for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Client
+        for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[2][$i][1]>$array[2][$j][1] && $array[2][$i][0]==$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
+        }
+    }
+
+    for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Compte (normalement inutile)
+        for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[2][$i][2]>$array[2][$j][2] && $array[2][$i][1]==$array[2][$j][1] && $array[2][$i][0]==$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
         }
     }
 
