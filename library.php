@@ -86,6 +86,23 @@ function feach3d($array=[]){ // affichage $array (3 dimensions)
     unset($v, $v2, $v3);
 }
 
+function feach3dbis($array3=[]){ // affichage $array (3 dimensions)
+    
+    foreach($array3 as $array){ // affiche toutes les valeurs de $array
+        $count=count($array)-1;
+        foreach($array as $v){ // affiche toutes les valeurs de $array
+            if($v!=$array[$count]){
+                foreach($v as $v2){
+                    echo("|".$v2);
+                }
+                echo("|<br />");
+            }
+        }
+        echo("<br />");
+    }
+    unset($v, $v2, $v3);
+}
+
 function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle existe 
     $i=0; // verifie l'existence d'un element
 
