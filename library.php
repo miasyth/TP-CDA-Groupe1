@@ -12,16 +12,6 @@ require 'filereader.php';
     7- Imprimer les infos client (Identifiant client)
 */
 
-function feach1d($array=[]){ // affichage $array (1 dimension)
-
-    foreach($array as $key => $v){ // affiche toutes les valeurs de $array
-        echo($key<count($array)-1) ? "|".$v : "|".$v."|" ;
-    }
-    unset($key, $v);
-
-    echo("\n\n");
-}
-
 function hfeach1d($array=[],$array2=[]){ // affichage $array (1 dimension)
 
     echo("\n");
@@ -72,23 +62,9 @@ function feach2dbis($array=[]){ // affichage $array (2 dimensions) en ignorant l
     echo("\n");
 }
 
-function feach3d($array=[]){ // affichage $array (3 dimensions)
+function feach3dbis($BDD=[]){ // affichage $BDD (3 dimensions) en ignorant la derniere ligne (a utiliser pour les CSV)
     
-    foreach($array as $v){ // affiche toutes les valeurs de $array
-        foreach($v as $v2){
-            foreach ($v2 as $v3){
-                echo("|".$v3);
-            }
-            echo("|\n");
-        }
-        echo("\n");
-    }
-    unset($v, $v2, $v3);
-}
-
-function feach3dbis($array3=[]){ // affichage $array (3 dimensions)
-    
-    foreach($array3 as $array){ // affiche toutes les valeurs de $array
+    foreach($BDD as $array){ // affiche toutes les valeurs de $array
         $count=count($array)-1;
         foreach($array as $v){ // affiche toutes les valeurs de $array
             if($v!=$array[$count]){
@@ -711,6 +687,30 @@ function clall($array){ // sauvegarde tous les tableaux et les place dans un fic
 /*
 
 // unused functions
+
+function feach1d($array=[]){ // affichage $array (1 dimension)
+
+    foreach($array as $key => $v){ // affiche toutes les valeurs de $array
+        echo($key<count($array)-1) ? "|".$v : "|".$v."|" ;
+    }
+    unset($key, $v);
+
+    echo("\n\n");
+}
+
+function feach3d($array=[]){ // affichage $array (3 dimensions)
+    
+    foreach($array as $v){ // affiche toutes les valeurs de $array
+        foreach($v as $v2){
+            foreach ($v2 as $v3){
+                echo("|".$v3);
+            }
+            echo("|\n");
+        }
+        echo("\n");
+    }
+    unset($v, $v2, $v3);
+}
 
 function get_header($array=[]){ // recupere le header d'une table
     $header=[];
