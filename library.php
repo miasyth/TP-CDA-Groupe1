@@ -88,8 +88,21 @@ function feach3d($array=[]){ // affichage $array (3 dimensions)
 
 function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle existe 
     $i=0; // verifie l'existence d'un element
-    
-    while(1){ 
+
+    foreach($tableAgence as $v){ // verifie l'existence de l'agence
+        if($v!=null){
+            if($v!=$tableAgence[0]){
+                $i++;
+            }
+        }
+    }
+
+    if($i==0){ // verifie si une agence existe
+        echo("Aucune agence n'est repertorie actuellement...\n");
+        return;
+    }
+
+    while(1){ // entre une agence
 
         echo("Voici les agences:\n");
         feach2dbis($tableAgence);
@@ -103,22 +116,12 @@ function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle e
                     $i=0;
                     return $x;
                 }
-                if($v!=$tableAgence[0]){
-                    $i++;
-                }
             }
         }
 
         unset($v);
-
         
-
-        if($i==0){ // verifie si une agence existe
-            echo("Aucune agence n'est repertorie actuellement...\n");
-            return null;
-        } else{
-            echo("Cette agence n'existe pas. Veuillez reesayer.\n\n");
-        }
+        echo("Cette agence n'existe pas. Veuillez reesayer.\n\n");
 
     }
 }
@@ -126,7 +129,20 @@ function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle e
 function check_client($tableclient=[]){ // entre un client et verifie qu'il existe 
     $i=0; // verifie l'existence d'un element
 
-    while(1){
+    foreach($tableclient as $v){ // verifie l'existence du client
+        if($v!=null){
+            if($v!=$tableclient[0]){
+                $i++;
+            }
+        }
+    }
+
+    if($i==0){ // verifie si un client pour l'agence selectionnee existe
+        echo("Aucun client n'est repertorie actuellement pour cette agence...\n");
+        return;
+    }
+
+    while(1){ // entre un client
 
         echo("Voici les clients de cette agence:\n\n");
         feach2d($tableclient);
@@ -140,24 +156,30 @@ function check_client($tableclient=[]){ // entre un client et verifie qu'il exis
                     $i=0;
                     return $y;
                 }
-                if($v!=$tableclient[0]){
-                    $i++;
-                }
             }
         }
 
         unset($v);
 
-        if($i==0){ // verifie si un client pour l'agence selectionnee existe
-            echo("Aucun client n'est repertorie actuellement pour cette agence...\n");
-            return;
-        }
         echo("Ce client n'existe pas. Veuillez reesayer.\n\n");
     }
 }
 
 function check_compte($tablecompte=[]){ // entre un compte et verifie qu'il existe 
     $i=0; // verifie l'existence d'un element
+
+    foreach($tablecompte as $v){ // verifie l'existence du compte
+        if($v!=null){
+            if($v!=$tablecompte[0]){
+                $i++;
+            }
+        }
+    }
+
+    if($i==0){ // verifie si un compte pour le client selectionne existe
+        echo("Aucun compte n'est repertorie actuellement pour ce client...\n");
+        return;
+    }
 
     while(1){
 
@@ -168,23 +190,16 @@ function check_compte($tablecompte=[]){ // entre un compte et verifie qu'il exis
 
         foreach($tablecompte as $v){ // verifie l'existence du compte
             if($v!=null){
-                if($v[1]==$z){
+                if($v[2]==$z){
                     unset($v);
                     $i=0;
                     return $z;
-                }
-                if($v!=$tablecompte[0]){
-                    $i++;
                 }
             }
         }
 
         unset($v);
 
-        if($i==0){ // verifie si un compte pour le client selectionne existe
-            echo("Aucun compte n'est repertorie actuellement pour ce client...\n");
-            return;
-        }
         echo("Ce compte n'existe pas. Veuillez reesayer.\n\n");
     }
 }
