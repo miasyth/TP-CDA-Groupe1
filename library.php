@@ -611,10 +611,17 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){
 
 function sall($array=[]){
 
-    for($i=1 ; $i<count($array[1]) ; $i++){
-        for($j=1 ; $j<count($array[1]) ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+    for($i=1 ; $i<count($array[1])-1 ; $i++){
+        for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
             $x=0;
-            ($array[1][$i][0]>$array[1][$j][0] && $i<$j) ? $x=$array[1][$i][0] and $array[1][$i][0]=$array[1][$j][0] and $array[1][$j][0]=$x : null ;
+            ($array[1][$i][0]>$array[1][$j][0] && $i<$j) ? $x=$array[1][$i] and $array[1][$i]=$array[1][$j] and $array[1][$j]=$x : null ;
+        }
+    }
+
+    for($i=1 ; $i<count($array[2])-1 ; $i++){
+        for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+            $x=0;
+            ($array[2][$i][0]>$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
         }
     }
 

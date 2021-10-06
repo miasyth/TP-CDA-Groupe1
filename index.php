@@ -21,7 +21,7 @@ while (true) {
     };
     switch ($choixMenu){
         case 8 :
-            //sall($bdd);
+            $bdd=sall($bdd);
             clall($bdd);
             exit;
         case 1:
