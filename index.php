@@ -2,7 +2,7 @@
 
 require "library.php";
 
-$bdd=opall([]);
+$bdd=opall();
 
 while (true) {
     echo ("\n 1- Créer une agence." . 
