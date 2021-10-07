@@ -26,12 +26,15 @@ while (true) {
             exit;
         case 1:
             $bdd[0]=add_agence($bdd[0]);
+            clall($bdd);
             break;
         case 2:
             $bdd[1]=add_client($bdd[0],$bdd[1]);
+            clall($bdd);
             break;
         case 3:       
             $bdd[2]=add_compte($bdd[0],$bdd[1],$bdd[2]);
+            clall($bdd);
             break;
         case 4:
             search_compte($bdd[0],$bdd[1],$bdd[2]);
