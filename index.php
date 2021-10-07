@@ -15,23 +15,27 @@ while (true) {
         "\n 8- Quitter le programme.\n\n");
     $choixMenu = readline("\nVotre choix : ");
     echo ("\n");
-        while (!preg_match("#^[1-8]$#", $choixMenu)) {
+        while (!preg_match("/^[1-8]$/", $choixMenu)) {
             $choixMenu = readline("Invalide! refaire votre choix : ");
             echo ("\n");
-    };
+        };
     switch ($choixMenu){
         case 8 :
-            $bdd=sall($bdd);
-            clall($bdd);
             exit;
         case 1:
             $bdd[0]=add_agence($bdd[0]);
+            $bdd=sall($bdd);
+            clall($bdd);
             break;
         case 2:
             $bdd[1]=add_client($bdd[0],$bdd[1]);
+            $bdd=sall($bdd);
+            clall($bdd);
             break;
         case 3:       
             $bdd[2]=add_compte($bdd[0],$bdd[1],$bdd[2]);
+            $bdd=sall($bdd);
+            clall($bdd);
             break;
         case 4:
             search_compte($bdd[0],$bdd[1],$bdd[2]);
