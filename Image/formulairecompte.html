@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire compte</title>
+    <title>Formulaire d'inscription client</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +17,7 @@
         </div>
         
         
-        <div id="head"> <center><h2>-- Votre agence selon votre ville--</h2></center>             
+        <div id="head"> <center><h2>--Type d'agence--</h2></center>             
             <select id='gMonth' onchange="show_city()">                 
                 <option selected value='0'>Choisissez votre Agence par rapport à votre ville</option>                 
                 <option value='1'>Lille</option>                 
@@ -37,7 +37,7 @@
         
         <!--Nom-->
         <hr>
-        <center><legend><h2>--Identité du client--</h2></legend></center>
+        <center><legend><h2>--Identité--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Nom">Votre Nom ou Nom de jeune fille : </label>
             <input type="text" id="id" name="user_id">
@@ -60,24 +60,20 @@
 
         <!--Sexe du Sexe-->
          <fieldset>
-            <center><legend><h2>-- Type de compte --</h2></legend></center>
+            <center><legend><h2>--Sexe--</h2></legend></center>
             <div>
                 <input type="radio" id="Homme" name="drone" value="Homme">
-                <label style="background-color: #bebebe;" for="Homme">Courant </label>
+                <label style="background-color: #bebebe;" for="Homme">Homme </label>
             </div>
 
             <div>
                 <input type="radio" id="Femme" name="drone" value="Femme">
-                <label style="background-color: #bebebe;" for="Femme">Livret A </label>
+                <label style="background-color: #bebebe;" for="Femme">Femme </label>
             </div>
 
             <div>
                 <input type="radio" id="Autre" name="drone" value="Autre">
-                <label style="background-color: #bebebe;" for="Autre">Plan épargne </label>
-            </div>
-            <div>
-                <input type="radio" id="Homme" name="drone" value="Homme">
-                <label style="background-color: #bebebe;" for="Homme">Livret jeune </label>
+                <label style="background-color: #bebebe;" for="Autre">Autre </label>
             </div>
         </fieldset>
         
@@ -86,7 +82,7 @@
         <br>
 
         <!--Adresse-->
-        <center><legend><h2>--Adresse du client --</h2></legend></center>
+        <center><legend><h2>--Adresse--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Adresse">Adresse : </label>
             <input type="text" id="id" name="user_id">
@@ -104,7 +100,7 @@
         <br>
 
         <!--Portable-->
-        <center><legend><h2>-- Contact du client --</h2></legend></center>
+        <center><legend><h2>--Contact--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Port">Télephone portable : </label>
             <input type="text" id="id" name="user_id">
