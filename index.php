@@ -18,7 +18,7 @@ while (true) {
         while (!preg_match("#^[1-8]$#", $choixMenu)) {
             $choixMenu = readline("Invalide! refaire votre choix : ");
             echo ("\n");
-    };
+        };
     switch ($choixMenu){
         case 8 :
             exit;
