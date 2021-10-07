@@ -15,7 +15,7 @@ while (true) {
         "\n 8- Quitter le programme.\n\n");
     $choixMenu = readline("\nVotre choix : ");
     echo ("\n");
-        while (!preg_match("#^[1-8]$#", $choixMenu)) {
+        while (!preg_match("/^[1-8]$/", $choixMenu)) {
             $choixMenu = readline("Invalide! refaire votre choix : ");
             echo ("\n");
         };

@@ -13,7 +13,7 @@
     <form action="#" method="post">
         
         
-        <div id="head"> <center><h2>--Type d'agence--</h2></center>             
+        <div id="head"> <center><h2>-- Votre agence selon votre ville--</h2></center>             
             <select id='gMonth' onchange="show_city()">                 
                 <option selected value='0'>Choisissez votre Agence par rapport à votre ville</option>                 
                 <option value='1'>Lille</option>                 
@@ -33,7 +33,7 @@
         
         <!--Nom-->
         <hr>
-        <center><legend><h2>--Identité--</h2></legend></center>
+        <center><legend><h2>--Identité du client--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Nom">Votre Nom ou Nom de jeune fille : </label>
             <input type="text" id="id" name="user_id">
@@ -56,20 +56,24 @@
 
         <!--Sexe du Sexe-->
          <fieldset>
-            <center><legend><h2>--Sexe--</h2></legend></center>
+            <center><legend><h2>-- Type de compte --</h2></legend></center>
             <div>
                 <input type="radio" id="Homme" name="drone" value="Homme">
-                <label style="background-color: #bebebe;" for="Homme">Homme </label>
+                <label style="background-color: #bebebe;" for="Homme">Courant </label>
             </div>
 
             <div>
                 <input type="radio" id="Femme" name="drone" value="Femme">
-                <label style="background-color: #bebebe;" for="Femme">Femme </label>
+                <label style="background-color: #bebebe;" for="Femme">Livret A </label>
             </div>
 
             <div>
                 <input type="radio" id="Autre" name="drone" value="Autre">
-                <label style="background-color: #bebebe;" for="Autre">Autre </label>
+                <label style="background-color: #bebebe;" for="Autre">Plan épargne </label>
+            </div>
+            <div>
+                <input type="radio" id="Homme" name="drone" value="Homme">
+                <label style="background-color: #bebebe;" for="Homme">Livret jeune </label>
             </div>
         </fieldset>
         
@@ -78,7 +82,7 @@
         <br>
 
         <!--Adresse-->
-        <center><legend><h2>--Adresse--</h2></legend></center>
+        <center><legend><h2>--Adresse du client --</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Adresse">Adresse : </label>
             <input type="text" id="id" name="user_id">
@@ -96,7 +100,7 @@
         <br>
 
         <!--Portable-->
-        <center><legend><h2>--Contact--</h2></legend></center>
+        <center><legend><h2>-- Contact du client --</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Port">Télephone portable : </label>
             <input type="text" id="id" name="user_id">
