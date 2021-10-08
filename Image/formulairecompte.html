@@ -10,118 +10,94 @@
     <script src= "compte.js" > </script>
 </head>
 <body style="background-color: #bebebe;">
-        
-    <form id="compteForm">
 
-        <div>
-            <button><a href="siteban.html">Acceuil</a></button>
-        </div>
+    <div>
+        <button><a href="siteban.html">Acceuil</a></button>
+    </div>
         
-        <div id="head"> <center><h2>-- Choix agence--</h2></center>             
-            <select id='agence' onchange="show_agence()">                 
+    <form name="Fagence">
+
+        <!--Id_Agence-->
+
+        <div id="head"> <center><h2>--AGENCE--</h2></center>             
+            <select id='IdAgence' onchange="showAgence(value)">                 
                 <option selected value='0'>Choisissez votre Agence</option>                 
-                <option value='1'>Banque Postale</option>                 
-                <option value='2'>Boursorama</option>                 
-                <option value='3'>HSBC</option>                 
-                <option value='4'>LCL</option>                 
-                <option value='5'>Caisse d'épargne</option>                 
-                <option value='6'>Crédit agricole</option>                 
-                <option value='7'>BNP Paribas</option>                 
-                <option value='8'>Hello Bank!</option>                 
-                <option value='9'>Société générale</option>                 
-                <option value='10'>Axa</option>                 
-                <option value='11'>Orange Bank</option>                 
-                <option value='12'>Crédit Mutuel</option>             
+                <option value='1'>Carrefour Banque</option>                 
+                <option value='2'>BNB Paribas</option>                 
+                <option value='3'>GMF</option>         
             </select>         
         </div>
-        
+
         <hr>
-        <center><legend><h2>--Choix de la personne--</h2></legend></center>
+
+    </form>
+
+    <form name="Fclient">
 
         <!--Id_Client-->
 
+        <center><legend><h2>--CLIENT--</h2></legend></center>
+
         <div>
-            <label style="background-color: #bebebe;" for="Nom">Votre Nom ou Nom de jeune fille : </label>
-            <input type="text" id="clientNom" name="user_id">
-        </div>
-        
-        <!--Prénom-->
-        
-        <div>
-            <label style="background-color:#bebebe;" for="Prénom">Votre Prénom : </label>
-            <input type="text" id="clientPrenom" name="user_password">
-        </div>
-        
-        <!--L'âge du client-->
-        <div>
-            <label style="background-color:#bebebe;" for="Age"> Votre âge : </label>
-            <input type="text" id="clientAge" name="user_id">
+            <label style="background-color: #bebebe;" for="Nom">Identifiant client : </label>
+            <input type="text" id="IdClient" name="drone" value="">
         </div>
         
         <hr>
 
-        <!--Sexe du Sexe-->
-         <fieldset>
-            <center><legend><h2>--Type de compte--</h2></legend></center>
-            <div>
-                <input type="radio" id="Livret A" name="drone" value="Livret A">
-                <label style="background-color: #bebebe;" for="Livret A">Livret A </label>
-            </div>
+    </form>
+
+    <form name="Fcompte">
+
+        <!--type compte-->
+
+        <fieldset> <center><legend><h2>--TYPE DE COMPTE--</h2></legend></center>
 
             <div>
-                <input type="radio" id="Plan épargne" name="drone" value="Plan épargne">
-                <label style="background-color: #bebebe;" for="Plan épargne">Plan épargne </label>
-            </div>
-
-            <div>
-                <input type="radio" id="Courant" name="drone" value="Courant">
+                <input type="radio" id="C" name="type" value="C">
                 <label style="background-color: #bebebe;" for="Courant">Courant</label>
             </div>
+
+            <div>
+                <input type="radio" id="A" name="type" value="A">
+                <label style="background-color: #bebebe;" for="Livret A">Livret A</label>
+            </div>
+
+            <div>
+                <input type="radio" id="PEL" name="type" value="PEL">
+                <label style="background-color: #bebebe;" for="Plan épargne">Plan £pargne Logement</label>
+            </div>
+
         </fieldset>
-        
-        <br>
+
         <hr>
-        <br>
 
-        <!--Adresse-->
-        <center><legend><h2>--Adresse du client--</h2></legend></center>
-        <div>
-            <label style="background-color: #bebebe;" for="Adresse">Adresse : </label>
-            <input type="text" id="clientAdress" name="user_id">
-        </div>
-        
-        <!--Code Postal-->
-        
-        <div>
-            <label style="background-color: #bebebe;" for="Code Postal">Code Postal : </label>
-            <input type="text" id="clientCP" name="user_id">
-        </div>
-        
-        <br>
+        <!--decouvert compte-->
+
+        <fieldset> <center><legend><h2>--DECOUVERT--</h2></legend></center>
+            
+            <div>
+                <input type="radio" id="Non Autorise" name="decouvert" value=false>
+                <label style="background-color: #bebebe;" for="Livret A">Non Autorise</label>
+            </div>
+
+            <div>
+                <input type="radio" id="Autorise" name="decouvert" value=true>
+                <label style="background-color: #bebebe;" for="Plan épargne">Autorise</label>
+            </div>
+        </fieldset>
+
         <hr>
-        <br>
 
-        <!--Portable-->
-        <center><legend><h2>--Contact--</h2></legend></center>
-        <div>
-            <label style="background-color: #bebebe;" for="Port">Télephone portable : </label>
-            <input type="text" id="clientTel" name="user_id">
-        </div>
-        
-        <!--Fixe-->
-        
-        <div>
-            <label style="background-color: #bebebe;" for="Fix">Télephone fix : </label>
-            <input type="text" id="clientFixe" name="user_id">
-        </div>
-        
-        <!--Mail-->
+        <!--Solde-->
+
+        <center><legend><h2>--SOLDE--</h2></legend></center>
 
         <div>
-            <label style="background-color: #bebebe;" for="Mail">Mail : </label>
-            <input type="text" id="clientMail" name="user_id">
+            <label style="background-color: #bebebe;" for="Nom">Solde : </label>
+            <input type="text" id="Solde" name="drone">
         </div>
-        
+
         <!--Envoyer-->
         
         <br>
@@ -129,8 +105,9 @@
         <br>
 
         <div>
-            <button type="submit" onclick="controle(compteForm)"> --Envoyer-- </button>
+            <INPUT type="button" value="--Envoyer--" onClick="addCompte(Fagence,Fclient,Fcompte)">
         </div>
     </form>
+
 </body>
 </html>

@@ -1,3 +1,4 @@
+/*
 window.addEventListener("load", function () {
     function sendData() {
       var XHR = new XMLHttpRequest();
@@ -33,7 +34,33 @@ window.addEventListener("load", function () {
     });
 });
 
-function controle(compteForm) {
-    var test = document.compteForm.id.value;
-    alert("Vous avez tapé : " + test);
+*/
+
+function showAgence(value){
+  
+  /*
+  for(val in Client){
+    console.log(val);
+  }
+  */
+ 
 }
+
+function addCompte(Fagence,Fclient,Fcompte) {
+
+    let IdAgence = document.Fagence.IdAgence.value;
+
+    let IdClient = document.Fclient.IdClient.value;
+
+    let Compte = {
+      Type: document.Fcompte.type.value,
+      Decouvert: document.Fcompte.decouvert.value,
+      Solde: document.Fcompte.Solde.value
+    }
+
+    alert("Vous venez de creer le compte : "+IdAgence+""+IdClient+" "+Compte.Type+Compte.Decouvert+Compte.Solde);
+}
+
+
+
+
