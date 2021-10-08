@@ -1,0 +1,14 @@
+{ 
+    "client" : {
+    "nom" : " " ,
+    "prenom" : " " ,
+    "dateDeNaiss" : " ",
+    "sexe" : " ",
+    "adresse" : " ",
+    "ville" : " ",
+    "codePost" : " ",
+    "telPort" : " ",
+    "telFixe" : " ",
+    "mail" : " "
+}
+}
