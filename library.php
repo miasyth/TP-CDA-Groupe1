@@ -1,6 +1,7 @@
 <?php
 
 require 'filereader.php';
+require 'constants.php';
 
 /*
     1- Créer une agence. --
@@ -670,18 +671,18 @@ function sall($array=[]){ // range dans l'ordre les tableaux
 function opall(){ // ouvre tous les fichiers CSV et les place dans un tableau
     $array=[];
 
-    $array[0]=read('agence.csv');
-    $array[1]=read('client.csv');
-    $array[2]=read('compte.csv');
+    $array[0]=read(FILE_AGENCE);
+    $array[1]=read(FILE_CLIENT);
+    $array[2]=read(FILE_COMPTE);
     
     return $array;
 }
 
 function clall($array){ // sauvegarde tous les tableaux et les place dans un fichiers CSV
 
-    write('agence.csv', $array[0]);
-    write('client.csv', $array[1]);
-    write('compte.csv', $array[2]);
+    write(FILE_AGENCE, $array[0]);
+    write(FILE_CLIENT, $array[1]);
+    write(FILE_COMPTE, $array[2]);
 }
 
 /*
