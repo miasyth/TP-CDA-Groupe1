@@ -7,18 +7,19 @@
     <title>Formulaire d'inscription client</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src= "compte.js" > </script>
 </head>
 <body style="background-color: #bebebe;">
         
-    <form action="inscrip.php" method="post">
+    <form id="compteForm">
 
         <div>
             <button><a href="siteban.html">Acceuil</a></button>
         </div>
         
-        <div id="head"> <center><h2>-- Nom agence--</h2></center>             
-            <select id='gMonth' onchange="show_agence()">                 
-                <option selected value='0'>Choisissez le nom de votre agence</option>                 
+        <div id="head"> <center><h2>-- Choix agence--</h2></center>             
+            <select id='agence' onchange="show_agence()">                 
+                <option selected value='0'>Choisissez votre Agence</option>                 
                 <option value='1'>Banque Postale</option>                 
                 <option value='2'>Boursorama</option>                 
                 <option value='3'>HSBC</option>                 
@@ -34,25 +35,27 @@
             </select>         
         </div>
         
-        <!--Nom-->
         <hr>
-        <center><legend><h2>--Identité de la personne--</h2></legend></center>
+        <center><legend><h2>--Choix de la personne--</h2></legend></center>
+
+        <!--Id_Client-->
+
         <div>
             <label style="background-color: #bebebe;" for="Nom">Votre Nom ou Nom de jeune fille : </label>
-            <input type="text" id="id" name="user_id">
+            <input type="text" id="clientNom" name="user_id">
         </div>
         
         <!--Prénom-->
         
         <div>
             <label style="background-color:#bebebe;" for="Prénom">Votre Prénom : </label>
-            <input type="text" id="password" name="user_password">
+            <input type="text" id="clientPrenom" name="user_password">
         </div>
         
         <!--L'âge du client-->
         <div>
             <label style="background-color:#bebebe;" for="Age"> Votre âge : </label>
-            <input type="text" id="id" name="user_id">
+            <input type="text" id="clientAge" name="user_id">
         </div>
         
         <hr>
@@ -84,14 +87,14 @@
         <center><legend><h2>--Adresse du client--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Adresse">Adresse : </label>
-            <input type="text" id="id" name="user_id">
+            <input type="text" id="clientAdress" name="user_id">
         </div>
         
         <!--Code Postal-->
         
         <div>
             <label style="background-color: #bebebe;" for="Code Postal">Code Postal : </label>
-            <input type="text" id="id" name="user_id">
+            <input type="text" id="clientCP" name="user_id">
         </div>
         
         <br>
@@ -102,21 +105,21 @@
         <center><legend><h2>--Contact--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Port">Télephone portable : </label>
-            <input type="text" id="id" name="user_id">
+            <input type="text" id="clientTel" name="user_id">
         </div>
         
         <!--Fixe-->
         
         <div>
             <label style="background-color: #bebebe;" for="Fix">Télephone fix : </label>
-            <input type="text" id="id" name="user_id">
+            <input type="text" id="clientFixe" name="user_id">
         </div>
         
         <!--Mail-->
 
         <div>
             <label style="background-color: #bebebe;" for="Mail">Mail : </label>
-            <input type="text" id="id" name="user_id">
+            <input type="text" id="clientMail" name="user_id">
         </div>
         
         <!--Envoyer-->
@@ -126,7 +129,7 @@
         <br>
 
         <div>
-            <button type="submit"> --Envoyer-- </button>
+            <button type="submit" onclick="controle(compteForm)"> --Envoyer-- </button>
         </div>
     </form>
 </body>
