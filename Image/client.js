@@ -38,7 +38,7 @@ function sendData(data) {
 */
 
 
-
+/*
 
 let client = [{
     nom : "Exemple : Dupont" ,
@@ -65,8 +65,10 @@ let creaClient = [{
     telFixe : prompt("Votre numéro fixe (02.01.01.01.01) : ") ,
     mail : prompt("Votre mail (exemple@exe.com) : ") ,
 }];
+*/
 
-console.log(creaClient);
+
+
 
 /*
 let newClient = JSON.stringify(creaClient);
