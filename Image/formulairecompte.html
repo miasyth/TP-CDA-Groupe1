@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,32 +8,34 @@
     <title>Formulaire d'inscription client</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script src= "compte.js" > </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="compte.js"></script>
 </head>
+
 <body style="background-color: #bebebe;">
 
     <div>
         <button><a href="siteban.html">Acceuil</a></button>
     </div>
-        
-    <form name="Fagence">
+
+    <form name="Fagence" id="Fagence">
 
         <!--Id_Agence-->
 
-        <div id="head"> <center><h2>--AGENCE--</h2></center>             
-            <select id='IdAgence' onchange="showAgence(value)">                 
-                <option selected value='0'>Choisissez votre Agence</option>                 
-                <option value='1'>Carrefour Banque</option>                 
-                <option value='2'>BNB Paribas</option>                 
-                <option value='3'>GMF</option>         
-            </select>         
+        <div id="head"> <center><h2>--AGENCE--</h2></center>
+            <select id='IdAgence' onchange="showAgence(value)">
+                <option selected value="">Choisissez votre Agence</option>
+                <option value='001'>Carrefour Banque</option>
+                <option value='002'>BNB Paribas</option>
+                <option value='003'>GMF</option>
+            </select>
         </div>
 
         <hr>
 
     </form>
 
-    <form name="Fclient">
+    <form name="Fclient" id="Fclient">
 
         <!--Id_Client-->
 
@@ -42,12 +45,12 @@
             <label style="background-color: #bebebe;" for="Nom">Identifiant client : </label>
             <input type="text" id="IdClient" name="drone" value="">
         </div>
-        
+
         <hr>
 
     </form>
 
-    <form name="Fcompte">
+    <form name="Fcompte" id="Fcompte">
 
         <!--type compte-->
 
@@ -55,17 +58,17 @@
 
             <div>
                 <input type="radio" id="C" name="type" value="C">
-                <label style="background-color: #bebebe;" for="Courant">Courant</label>
+                <label style="background-color: #bebebe;" for="C">Courant</label>
             </div>
 
             <div>
                 <input type="radio" id="A" name="type" value="A">
-                <label style="background-color: #bebebe;" for="Livret A">Livret A</label>
+                <label style="background-color: #bebebe;" for="A">Livret A</label>
             </div>
 
             <div>
                 <input type="radio" id="PEL" name="type" value="PEL">
-                <label style="background-color: #bebebe;" for="Plan épargne">Plan £pargne Logement</label>
+                <label style="background-color: #bebebe;" for="PEL">Plan Epargne Logement</label>
             </div>
 
         </fieldset>
@@ -75,7 +78,7 @@
         <!--decouvert compte-->
 
         <fieldset> <center><legend><h2>--DECOUVERT--</h2></legend></center>
-            
+
             <div>
                 <input type="radio" id="Non Autorise" name="decouvert" value=false>
                 <label style="background-color: #bebebe;" for="Livret A">Non Autorise</label>
@@ -85,6 +88,7 @@
                 <input type="radio" id="Autorise" name="decouvert" value=true>
                 <label style="background-color: #bebebe;" for="Plan épargne">Autorise</label>
             </div>
+
         </fieldset>
 
         <hr>
@@ -99,7 +103,7 @@
         </div>
 
         <!--Envoyer-->
-        
+
         <br>
         <hr>
         <br>
@@ -107,6 +111,7 @@
         <div>
             <INPUT type="button" value="--Envoyer--" onClick="addCompte(Fagence,Fclient,Fcompte)">
         </div>
+
     </form>
 
 </body>
