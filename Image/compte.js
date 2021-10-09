@@ -1,7 +1,7 @@
-const COMPTES= "/Git/TP-Gestion-de-Comptes-Bancaires/image/BDD.json"; // permettra d'acceder a la base de donnee
+const BDDJSON= "/Git/TP-Gestion-de-Comptes-Bancaires/image/BDD.json"; // permettra d'acceder a la base de donnee
 
 
-fetch(COMPTES) // lecture de la BDD
+fetch(BDDJSON) // lecture de la BDD
 .then(response => response.json())
 .then(data => {
   console.log(data);
@@ -11,19 +11,15 @@ fetch(COMPTES) // lecture de la BDD
 
 let BDD
 
-//console.log(BDD.Agences[0].IdAgence.value);
-
-/*
-async function getBDD() {
-  let response = await fetch(COMPTES)
-  let BDD = await response.json()
-  console.log(BDD)
-  return BDD
+function getData(url, cb) {
+  fetch(url)
+    .then(response => response.json())
+    .then(result => cb(result));
 }
 
-let BDD=getBDD()
-console.log(BDD)
-*/
+getData(BDDJSON, (BDD) => console.log(BDD.Agences))
+
+//console.log(BDD.Agences[0].IdAgence.value);
 
 let showAgences=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
   
