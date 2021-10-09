@@ -18,12 +18,10 @@
         <button><a href="siteban.html">Acceuil</a></button>
     </div>
 
-    <form name="Fagence" id="Fagence">
-
-        <!--Id_Agence-->
+    <form name="Fagence" id="Fagence"> <!--Id_Agence-->
 
         <div id="head"> <center><h2>--AGENCE--</h2></center>
-            <select id='IdAgence' onchange="showAgence(value)">
+            <select id='IdAgence' onchange="showAgences(value)">
                 <option selected value="">Choisissez votre Agence</option>
                 <option value='001'>Carrefour Banque</option>
                 <option value='002'>BNB Paribas</option>
@@ -35,9 +33,7 @@
 
     </form>
 
-    <form name="Fclient" id="Fclient">
-
-        <!--Id_Client-->
+    <form name="Fclient" id="Fclient"> <!--Id_Client-->
 
         <center><legend><h2>--CLIENT--</h2></legend></center>
 
@@ -50,11 +46,9 @@
 
     </form>
 
-    <form name="Fcompte" id="Fcompte">
+    <form name="Fcompte" id="Fcompte"> <!--infos compte-->
 
-        <!--type compte-->
-
-        <fieldset> <center><legend><h2>--TYPE DE COMPTE--</h2></legend></center>
+        <fieldset> <center><legend><h2>--TYPE DE COMPTE--</h2></legend></center> <!--type compte-->
 
             <div>
                 <input type="radio" id="C" name="type" value="C">
@@ -75,9 +69,7 @@
 
         <hr>
 
-        <!--decouvert compte-->
-
-        <fieldset> <center><legend><h2>--DECOUVERT--</h2></legend></center>
+        <fieldset> <center><legend><h2>--DECOUVERT--</h2></legend></center> <!--decouvert compte-->
 
             <div>
                 <input type="radio" id="Non Autorise" name="decouvert" value=false>
@@ -93,23 +85,19 @@
 
         <hr>
 
-        <!--Solde-->
-
-        <center><legend><h2>--SOLDE--</h2></legend></center>
+        <center><legend><h2>--SOLDE--</h2></legend></center> <!--Solde-->
 
         <div>
             <label style="background-color: #bebebe;" for="Nom">Solde : </label>
             <input type="text" id="Solde" name="drone">
         </div>
 
-        <!--Envoyer-->
-
         <br>
         <hr>
         <br>
 
         <div>
-            <INPUT type="button" value="--Envoyer--" onClick="addCompte(Fagence,Fclient,Fcompte)">
+            <input type="button" value="--Creer--" onClick="addCompte(Fagence,Fclient,Fcompte)"> <!--Creer-->
         </div>
 
     </form>

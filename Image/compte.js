@@ -1,6 +1,6 @@
 const COMPTES= "/image/BDD.json"; // permettra d'acceder a la base de donnee
 
-let showAgence=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
+let showAgences=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
   
   /*
   for(val in Client){
@@ -9,13 +9,6 @@ let showAgence=(value)=>{ // donnera les agences qui existent pour la liste dero
   */
  
 }
-
-// a lire pour la lecture et l'ecriture des cles https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Useful_string_methods
-
-// format agence (3 chiffres) auto-incrementes. Exemples: (001, 002, 003, ...)
-// format client (2 lettres et 6 chiffres) auto-incrementes (initiale nom+prenom, cle agence, numero client). Exemples: (CF001001, MH001002, LM002001, ...)
-// format compte (cle client (sans lettres), numero compte, type de compte). Exemples: (00100100101, 00100100202, 00100200103...)
-
 
 let addCompte = (Fagence,Fclient,Fcompte) => { // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
 
