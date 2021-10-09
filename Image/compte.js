@@ -1,4 +1,29 @@
-const COMPTES= "/image/BDD.json"; // permettra d'acceder a la base de donnee
+const COMPTES= "/Git/TP-Gestion-de-Comptes-Bancaires/image/BDD.json"; // permettra d'acceder a la base de donnee
+
+
+fetch(COMPTES) // lecture de la BDD
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+  document.querySelector("#a").innerText=data._commentaires[3]+"\n";
+  document.querySelector("#a").innerText+=data._commentaires[2];
+})
+
+let BDD
+
+//console.log(BDD.Agences[0].IdAgence.value);
+
+/*
+async function getBDD() {
+  let response = await fetch(COMPTES)
+  let BDD = await response.json()
+  console.log(BDD)
+  return BDD
+}
+
+let BDD=getBDD()
+console.log(BDD)
+*/
 
 let showAgences=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
   
@@ -10,7 +35,7 @@ let showAgences=(value)=>{ // donnera les agences qui existent pour la liste der
  
 }
 
-let addCompte = (Fagence,Fclient,Fcompte) => { // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
+let addCompte=(Fagence,Fclient,Fcompte)=>{ // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
 
   let IdAgence= document.Fagence.IdAgence.value; // recupere IdAgence
 
@@ -68,7 +93,7 @@ let addCompte = (Fagence,Fclient,Fcompte) => { // ajoutera un compte au fichier 
       return;
   }
 
-  let IdCompte= IdAgence+IdClient+"001"+IdType; // cree l'Id du compte
+  IdCompte= IdAgence+IdClient+"001"+IdType; // cree l'Id du compte
 
   switch (Compte.Decouvert) { // verifie l'entree du decouvert
 
