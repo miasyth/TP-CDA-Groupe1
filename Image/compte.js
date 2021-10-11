@@ -1,4 +1,4 @@
-const BDDJSON= "/Git/TP-Gestion-de-Comptes-Bancaires/image/BDD.json"; // permettra d'acceder a la base de donnee
+const BDDJSON= "/image/BDD.json"; // permettra d'acceder a la base de donnee
 
 
 fetch(BDDJSON) // lecture de la BDD
