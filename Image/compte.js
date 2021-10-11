@@ -1,23 +1,26 @@
 const BDDJSON= "/image/BDD.json"; // permettra d'acceder a la base de donnee
 
-
+/* // lecture de Json v1
 fetch(BDDJSON) // lecture de la BDD
 .then(response => response.json())
 .then(data => {
   console.log(data);
-  document.querySelector("#a").innerText=data._commentaires[3]+"\n";
-  document.querySelector("#a").innerText+=data._commentaires[2];
+  document.querySelector("#a").innerText=data._commentaires[0]+"\n";
+  document.querySelector("#a").innerText+=data._commentaires[3];
 })
+*/
 
-let BDD
-
-function getData(url, cb) {
+function getData(url, cb) { // lecture de Json v2
   fetch(url)
     .then(response => response.json())
     .then(result => cb(result));
 }
 
-getData(BDDJSON, (BDD) => console.log(BDD.Agences))
+getData(BDDJSON, (BDD) => {
+console.log(BDD.Agences);
+document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
+document.querySelector("#a").innerText+=BDD._commentaires[3];
+})
 
 //console.log(BDD.Agences[0].IdAgence.value);
 
