@@ -1,6 +1,6 @@
 const fs = require ('fs')
-const BDDJSON= "/image/BDD.json"; // permet d'acceder a la base de donnee
-const TESTJSON= "./image/TEST.json"; // permet d'acceder a la base de donnee
+const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
+const TESTJSON= "../compte/TEST.json"; // permet d'acceder a la base de donnee
 
 
 // lecture de Json v2
