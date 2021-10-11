@@ -9,27 +9,7 @@
 <body>
 <?php
 
-function read($json){
-    $file = fopen($json, 'r');
-    while (!feof($file) ) {
-        $line[] = fgetcsv($file, 1024, ";");
-    }
-    fclose($file);
-    return $line;
-}
 
-
-function write($json, $tab){
-    $file = fopen($json, 'w');
-    foreach($tab as $valeur) {
-        if($valeur != null) {
-            fputcsv($file, $valeur, ";");
-        }
-        
-        //print_r($valeur); 
-    }
-    fclose($file);
-}
 echo json_encode($_POST);
 
 $city=$_POST["city_id"]; // Choix de la ville
