@@ -1,28 +1,56 @@
-const BDDJSON= "/image/BDD.json"; // permettra d'acceder a la base de donnee
+const fs = require ('fs')
+const BDDJSON= "/image/BDD.json"; // permet d'acceder a la base de donnee
+const TESTJSON= "./image/TEST.json"; // permet d'acceder a la base de donnee
 
-/* // lecture de Json v1
-fetch(BDDJSON) // lecture de la BDD
-.then(response => response.json())
-.then(data => {
-  console.log(data);
-  document.querySelector("#a").innerText=data._commentaires[0]+"\n";
-  document.querySelector("#a").innerText+=data._commentaires[3];
-})
-*/
 
-function getData(url, cb) { // lecture de Json v2
+// lecture de Json v2
+let getData=(url, cb)=>{ // lecture de BDD
   fetch(url)
     .then(response => response.json())
-    .then(result => cb(result));
+    .then(result => cb(result))
+}
+//
+
+let putData=(url, BDD)=>{ // ecriture de BDD
+  
+  BDD=JSON.stringify({BDD})
+
+  fs.writeFile(url, BDD, (error)=>{
+    console.log(error);
+  });
+
+  /*
+  try{
+    
+  const myInit = { // parametre de fetch
+    method: 'post',
+    body: JSON.stringify({BDD})
+  };
+
+  fetch(url, myInit) // ecriture de BDD
+    .then(res => res.json())
+    .then(res => console.log(res))
+  } catch (error){
+    console.error(error);
+  }
+  */
 }
 
-getData(BDDJSON, (BDD) => {
-console.log(BDD.Agences);
-document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
-document.querySelector("#a").innerText+=BDD._commentaires[3];
-})
+// --------------------------------------------------------
 
-//console.log(BDD.Agences[0].IdAgence.value);
+let Agences={
+  id:"001"
+}
+
+putData(TESTJSON, Agences);
+
+// --------------------------------------------------------
+
+getData(BDDJSON, BDD => { // actions
+  console.log(BDD.Agences);
+  document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
+  document.querySelector("#a").innerText+=BDD._commentaires[3];
+})
 
 let showAgences=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
   
@@ -123,3 +151,18 @@ let addCompte=(Fagence,Fclient,Fcompte)=>{ // ajoutera un compte au fichier JSON
   
   alert("Vous venez de creer le compte : "+IdCompte+Type+Decouvert+"ayant pour solde: "+Compte.Solde+" euros.");
 }
+
+/* 
+// archives
+
+
+// lecture de Json v1
+
+fetch(BDDJSON) // lecture de BDD
+.then(response => response.json())
+.then(data => {
+  // actions
+  console.log(data);
+})
+
+*/
