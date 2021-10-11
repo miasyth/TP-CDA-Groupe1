@@ -37,8 +37,28 @@ function sendData(data) {
   }
 */
 
+const BDDJSON= "/image/BDD.json"; // permettra d'acceder a la base de donnee
 
-/*
+
+fetch(BDDJSON) // lecture de la BDD
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+  document.querySelector("#a").innerText=data._commentaires[3]+"\n";
+  document.querySelector("#a").innerText+=data._commentaires[2];
+})
+
+let BDD
+
+function getData(url, cb) {
+  fetch(url)
+    .then(response => response.json())
+    .then(result => cb(result));
+}
+
+getData(BDDJSON, (BDD) => console.log(BDD.Agences))
+
+
 
 let client = [{
     nom : "Exemple : Dupont" ,
@@ -65,13 +85,10 @@ let creaClient = [{
     telFixe : prompt("Votre numéro fixe (02.01.01.01.01) : ") ,
     mail : prompt("Votre mail (exemple@exe.com) : ") ,
 }];
-*/
 
 
-
-
-/*
 let newClient = JSON.stringify(creaClient);
 let creatClient = JSON.parse(newClient);
 console.log(creaClient)
-*/
+
+
