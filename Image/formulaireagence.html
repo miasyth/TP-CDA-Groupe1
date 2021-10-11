@@ -7,9 +7,10 @@
     <title>Formulaire de création d'agence.</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="agence.php" />
 </head>
 <body style="background-color: #bebebe;">
-        
+
     <form action="agence.php" method="post">
         <div>
             <button><a href="siteban.html">Acceuil</a></button>
@@ -17,7 +18,7 @@
         
         <!--Choix de l'agence-->         
         <div id="head"> <center><h2>-- Nom agence--</h2></center>             
-            <select id='gMonth' onchange="show_agence()">                 
+            <select id='Agence' name='Agence'>                 
                 <option selected value='0'>Choisissez le nom de votre agence</option>                 
                 <option value='1'>GMF</option>                 
                 <option value='2'>Carrefour</option>                 
@@ -38,14 +39,14 @@
     
         <div>
             <label style="background-color: #bebebe;" for="Adresse">Adresse de l'agence : </label>
-            <input type="text" id="Adresse" name="user_id">
+            <input type="text" id="Adresse" name="Adresse">
         </div>
         
         <!--Code Postal-->
         
         <div>
             <label style="background-color: #bebebe;" for="Code Postal">Code Postal : </label>
-            <input type="text" id="Code_Postal" name="user_id">
+            <input type="text" id="Code_Postal" name="Code_Postal">
         </div>
         
         <br>
@@ -56,12 +57,12 @@
         <center><legend><h2>--Contact--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Port">Télephone : </label>
-            <input type="text" id="Télephone" name="user_id">
+            <input type="text" id="Télephone" name="Télephone">
         </div>
 
         <div>
             <label style="background-color: #bebebe;" for="Mail">Mail de contact : </label>
-            <input type="text" id="Mail" name="user_id">
+            <input type="text" id="Mail" name="Mail">
         </div>
         
         <!--Envoyer-->
@@ -70,10 +71,12 @@
         <hr>
         <br>
 
-        <div>
-            <button id = "boutton_agence" type="submit" value="--Créer--"> Envoyer </button>
-            <script>src = "./agence.js" </script>
-        </div>
+        <p>
+            <label>Envoyer le fichier :</label>
+            <input type="submit" name="submit" />
+        </p>
+        
+
     </form>
 </body>
 </html>
