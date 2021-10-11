@@ -1,10 +1,10 @@
 /*
 
 function sendData(data) {
-    var XHR = new XMLHttpRequest();
-    var urlEncodedData = "";
-    var urlEncodedDataPairs = [];
-    var name;
+    let XHR = new XMLHttpRequest();
+    let urlEncodedData = "";
+    let urlEncodedDataPairs = [];
+    let name;
   
     // Transformez l'objet data en un tableau de paires clé/valeur codées URL.
     for(name in data) {
@@ -56,7 +56,7 @@ function getData(url, cb) {
     .then(result => cb(result));
 }
 
-getData(BDDJSON, (BDD) => console.log(BDD.Agences))
+getData(BDDJSON, (BDD) => console.log(BDD.client))
 
 
 
@@ -90,5 +90,3 @@ let creaClient = [{
 let newClient = JSON.stringify(creaClient);
 let creatClient = JSON.parse(newClient);
 console.log(creaClient)
-
-

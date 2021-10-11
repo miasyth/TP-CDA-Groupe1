@@ -48,17 +48,10 @@ $age=$_POST["age_id"]; // Mettre son âge
 $tab=$_POST;
 echo($_POST["age_id"]);
 
-$men=$_POST["men_id"]; // Choix du sexe
+$sexe=$_POST["sexe_id"]; // Choix du sexe
 $tab=$_POST;
-echo($_POST["men_id"]);
+echo($_POST["sexe_id"]);
 
-$women=$_POST["women_id"];
-$tab=$_POST;
-echo($_POST["women_id"]);
-
-$other=$_POST["other_id"];
-$tab=$_POST;
-echo($_POST["other_id"]);
 
 $adress=$_POST["adress_id"]; // renseignement sur l'adresse
 $tab=$_POST;
