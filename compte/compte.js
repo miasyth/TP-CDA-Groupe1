@@ -1,4 +1,3 @@
-const fs = require ('fs')
 const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
 const TESTJSON= "../compte/TEST.json"; // permet d'acceder a la base de donnee
 
@@ -12,14 +11,7 @@ let getData=(url, cb)=>{ // lecture de BDD
 //
 
 let putData=(url, BDD)=>{ // ecriture de BDD
-  
-  BDD=JSON.stringify({BDD})
 
-  fs.writeFile(url, BDD, (error)=>{
-    console.log(error);
-  });
-
-  /*
   try{
     
   const myInit = { // parametre de fetch
@@ -33,7 +25,6 @@ let putData=(url, BDD)=>{ // ecriture de BDD
   } catch (error){
     console.error(error);
   }
-  */
 }
 
 // --------------------------------------------------------
@@ -42,7 +33,7 @@ let Agences={
   id:"001"
 }
 
-putData(TESTJSON, Agences);
+//putData(TESTJSON, Agences);
 
 // --------------------------------------------------------
 
