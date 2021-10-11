@@ -13,7 +13,7 @@
 
 <?php
 
-    require 'formulaireagence.html';
+    //require 'formulaireagence.html';
 
     echo json_encode($_POST);
 
