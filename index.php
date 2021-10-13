@@ -2,9 +2,10 @@
 
 require "library.php";
 
-$bdd=opall();
-
 while (true) {
+
+    $bdd=opall();
+
     echo ("\n 1- Créer une agence." . 
         "\n 2- Créer un client." . 
         "\n 3- Créer un compte bancaire." . 
