@@ -11,27 +11,20 @@
 
 <body>
 
+<h4>
+    Bonjour, avez bous bien entré cette Adresse <?php echo $_POST['nom'] ?> pour cette agence ? <?php echo $_POST['Agence'] ?>
+    Voici le code postal indiqué, <?php echo $_POST['Code_Postal'] ?> ainsi que le Téléphone <?php echo $_POST['Telephone'] ?> et le Mail <?php echo $_POST['Mail'] ?>.
+</h4>
+
 <?php
-
-    //require 'formulaireagence.html';
-
-    echo json_encode($_POST);
-
-
-    if (isset($_POST['Adresse']) && (isset($_POST['Code_Postal']) && (isset($_POST['Agence'])))){ // si formulaire soumis
-        //$tab = $_POST;
-        echo $_POST['Adresse'];
-        echo $_POST['Code_Postal'];
-        echo $_POST['Agence'];
-    }
-    else if (isset($_POST['Télephone']) && (isset($_POST['Mail']))){ // si formulaire soumis
-        //$tab = $_POST;
-        echo $_POST['Télephone'];
-        echo $_POST['Mail'];
-    }
-
-
+    $Ag = $_POST['Agence'];
+    $Ad = $_POST['Adresse'];
+    $Cp = $_POST['Code_Postal'];
+    $T = $_POST['Télephone'];
+    $M = $_POST['Mail'];
 ?>
+
+<!--Voir pour transférer les valeurs dans un tableau appelé das une fonction, puis les renvoyer dans sur la page html et afficher le tout dans une case.-->
     
 </body>
 
