@@ -21,6 +21,7 @@ while (true) {
         };
     switch ($choixMenu){
         case 8 :
+            feach3dbis($bdd);
             exit;
         case 1:
             $bdd[0]=add_agence($bdd[0]);
