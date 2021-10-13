@@ -38,16 +38,16 @@ while (true) {
             clall($bdd);
             break;
         case 4:
-            search_compte($bdd[0],$bdd[1],$bdd[2]);
+            search_compte($bdd[2]);
             break;
         case 5:
-            search_client($bdd[0],$bdd[1]);
+            search_client($bdd[1]);
             break;
         case 6:
-            list_comptes($bdd[0],$bdd[1],$bdd[2]);
+            list_comptes($bdd[1],$bdd[2]);
             break;
         case 7:
-            print_client($bdd[0],$bdd[1],$bdd[2]);
+            print_client($bdd[1],$bdd[2]);
             break;
     };
 }
