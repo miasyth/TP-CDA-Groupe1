@@ -2,9 +2,10 @@
 
 require "library.php";
 
-$bdd=opall();
-
 while (true) {
+
+    $bdd=opall();
+
     echo ("\n 1- Créer une agence." . 
         "\n 2- Créer un client." . 
         "\n 3- Créer un compte bancaire." . 
@@ -21,7 +22,6 @@ while (true) {
         };
     switch ($choixMenu){
         case 8 :
-            feach3dbis($bdd);
             exit;
         case 1:
             $bdd[0]=add_agence($bdd[0]);
