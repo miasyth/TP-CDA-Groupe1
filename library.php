@@ -103,6 +103,10 @@ function check_agence($tableAgence=[]){ // entre une agence et verifie qu'elle e
     
         $x=readline("Entrez le numero de votre agence: ");
 
+        if($x==null){
+            return;
+        }
+
         foreach($tableAgence as $v){ // verifie l'existence de l'agence
             if($v!=null){
                 if($v[0]==$x){
@@ -143,6 +147,10 @@ function check_client($tableclient=[]){ // entre un client et verifie qu'il exis
     
         $y=readline("Entrez le numero du client: ");
 
+        if($y==null){
+            return;
+        }
+
         foreach($tableclient as $v){ // verifie l'existence du client
             if($v!=null){
                 if($v[1]==$y){
@@ -168,12 +176,12 @@ function add_agence($tableAgence=[]){ // ajoute une agence
 
         $idAgence="001";
 
-    } else if($tableAgence[$count-1][0]>="999"){
+    } else if($tableAgence[$count-1][0]>="999"){ // verifie que le nombre d'agence ne depasse pas 999
 
         echo("Desole, le nombre maximum d'agences est atteint\n");
         return $tablebackup;
 
-    } else if($tableAgence[$count-1][0]>="100"){
+    } else if($tableAgence[$count-1][0]>="100"){ // gere les ajouts de zero pour l'id Agence
 
         $idAgence=$tableAgence[$count-1][0]+1;
 
@@ -191,11 +199,27 @@ function add_agence($tableAgence=[]){ // ajoute une agence
 
     $tableAgence[$count][++$i]=readline("Entrez le nom de l'agence: ");
 
+    if($tableAgence[$count][$i]==null){
+        return $tablebackup;
+    }
+
     $tableAgence[$count][++$i]=readline("Entrez l'adresse de l'agence: ");
+
+    if($tableAgence[$count][$i]==null){
+        return $tablebackup;
+    }
 
     $tableAgence[$count][++$i]=readline("Entrez la ville de l'agence: ");
 
+    if($tableAgence[$count][$i]==null){
+        return $tablebackup;
+    }
+
     $tableAgence[$count][++$i]=readline("Entrez le code postal de l'agence: ");
+
+    if($tableAgence[$count][$i]==null){
+        return $tablebackup;
+    }
 
     return $tableAgence;
 }
@@ -216,7 +240,7 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
         return $tablebackup;
     }
 
-    if($x>="010" && $x<="100"){
+    if($x>="010" && $x<="100"){ // gere les ajouts de zero pour l'id Agence
 
         $x="0".$x;
 
@@ -251,9 +275,17 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
     
     $tableClient[$count][++$i]=readline("Entrez le nom du client: ");
 
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
+
     $iN=$tableClient[$count][$i][0];
 
     $tableClient[$count][++$i]=readline("Entrez le prenom du client: ");
+
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
 
     $iP=$tableClient[$count][$i][0];
 
@@ -270,20 +302,22 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
         $idClient=$iN.$iP.$x."0".substr($y,5)+1;
 
-    } else if(substr($y,5)>"001"){
+    } else if(substr($y,5)>="001"){
 
         $idClient=$iN.$iP.$x."00".substr($y,5)+1;
 
-    } else {
-
-        echo ("\nerror\n");
-
+    } else if($y==0){
+        $idClient=$iN.$iP.$x."001";
     }
 
     $tableClient[$count][1]=$idClient; // Id Client
 
 
     $tableClient[$count][++$i]=readline("Entrez la date de naissance du client (jj/mm/aaaa): ");
+
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
 
     // module conf sex
     $c=readline("Entrez le sexe du client (H/F): ");
@@ -299,15 +333,39 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     $tableClient[$count][++$i]=readline("Entrez l'adresse du client (numero et rue): ");
 
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
+
     $tableClient[$count][++$i]=readline("Entrez la ville du client: ");
+
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
 
     $tableClient[$count][++$i]=readline("Entrez le code postal du client: ");
 
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
+
     $tableClient[$count][++$i]=readline("Entrez le telephone portable du client: ");
+
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
 
     $tableClient[$count][++$i]=readline("Entrez le telephone fixe du client: ");
 
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
+
     $tableClient[$count][++$i]=readline("Entrez l'adresse e-mail du client: ");
+
+    if($tableClient[$count][$i]==null){
+        return $tablebackup;
+    }
 
     return $tableClient;
 }
@@ -329,7 +387,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
         return $tablebackup;
     }
 
-    if($x>="010" && $x<="100"){
+    if($x>="010" && $x<="100"){ // gere les ajouts de zero pour l'id Agence
 
         $x="0".$x;
 
@@ -337,10 +395,6 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
 
         $x="00".$x;
 
-    }
-    
-    if($x==null){
-        return $tablebackup;
     }
 
     $tableCompte[$count][$i]=$x; // Id Agence
@@ -424,7 +478,7 @@ function add_compte($tableAgence=[], $tableClient=[], $tableCompte=[]){ // ajout
     $c="X";
     //
 
-    if($tableCompte[$count-1]==$tableCompte[0]){ // gere les ajouts de zero pour l'id Compte
+    if($z==0){ // gere les ajouts de zero pour l'id Compte
 
         $idCompte=$x.substr($y,5)."001".$idType;
 
