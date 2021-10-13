@@ -30,9 +30,14 @@
     $tab=$_POST;
     
     foreach($tab as $key => $val){
+        $data[] = $val;
         print_r("$val |");
-    };
+    }
     
+
+    $fp = fopen('agence.json', 'w');
+    fwrite($fp, json_encode($data));
+    fclose($fp);
 ?>
 
 <!--Voir pour transférer les valeurs dans un tableau appelé das une fonction, puis les renvoyer dans sur la page html et afficher le tout dans une case.-->
