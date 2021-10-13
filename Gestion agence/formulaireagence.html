@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire de création d'agence.</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="Image/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="agence.php" />
 </head>
 <body style="background-color: #bebebe;">
@@ -18,7 +18,7 @@
         
         <!--Choix de l'agence-->         
         <div id="head"> <center><h2>-- Nom agence--</h2></center>             
-            <select id='Agence' name='Agence'>                 
+            <select id='Agence' name='Agence' onchange="show_Agence()">                 
                 <option selected value='0'>Choisissez le nom de votre agence</option>                 
                 <option value='1'>GMF</option>                 
                 <option value='2'>Carrefour</option>                 
@@ -57,7 +57,7 @@
         <center><legend><h2>--Contact--</h2></legend></center>
         <div>
             <label style="background-color: #bebebe;" for="Port">Télephone : </label>
-            <input type="text" id="Télephone" name="Télephone">
+            <input type="text" id="Télephone" name="Téléphone">
         </div>
 
         <div>
@@ -72,9 +72,8 @@
         <br>
 
         <p>
-            <input type="submit" name="submit" value="OK"/>
+            <input type="submit" value="Envoyer"/>
         </p>
-        
 
     </form>
 </body>
