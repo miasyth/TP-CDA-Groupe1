@@ -277,7 +277,12 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     unset($v);
 
-    if($y==-1){// dans le cas ou l'agence n'a pas encore de client (On pars tous de zero...)
+    if(substr($y,5)=="999"){
+
+        echo("Desole, le nombre maximum de clients pour cette agence est atteint\n");
+        return $tablebackup;
+
+    } else if($y==-1){// dans le cas ou l'agence n'a pas encore de client (On pars tous de zero...)
         $y=0;
     }
 
@@ -292,26 +297,26 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
     $iP=$tableClient[$count][$i][0];
 
     //-----------------------------------------------------------------
-    if($tableClient[$count-1][1]=="001"){
+    
+    if($tableClient[$count-1]==$tableClient[0]){
 
-        $idClient=$iN.$iP.$x."001";
+        $idClient=$x."001";
 
-    } else if(substr($tableClient[$count-1][1],5)=="999"){
+    } else if(substr($y,5)>"100"){
 
-        echo("Desole, le nombre maximum d'agences est atteint\n");
-        return $tablebackup;
+        $idClient=$iN.$iP.$x.substr($y,5)+1;
 
-    } else if(substr($tableClient[$count-1][1],5)>"100"){
+    } else if(substr($y,5)>"010"){
 
-        $idClient=$iN.$iP.$x.substr($tableClient[$count-1][1],5)+1;
+        $idClient=$iN.$iP.$x."0".substr($y,5)+1;
 
-    } else if(substr($tableClient[$count-1][1],5)>"010"){
+    } else if(substr($y,5)>"001"){
 
-        $idClient=$iN.$iP.$x."0".substr($tableClient[$count-1][1],5)+1;
+        $idClient=$iN.$iP.$x."00".substr($y,5)+1;
 
-    } else if(substr($tableClient[$count-1][1],5)>"001"){
+    } else {
 
-        $idClient=$iN.$iP.$x."00".substr($tableClient[$count-1][1],5)+1;
+        echo ("\nerror\n");
 
     }
 
@@ -345,8 +350,6 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
     $tableClient[$count][++$i]=readline("Entrez le telephone fixe du client: ");
 
     $tableClient[$count][++$i]=readline("Entrez l'adresse e-mail du client: ");
-
-    print_r($tableClient[$count]);
 
     return $tableClient;
 }
@@ -692,12 +695,30 @@ function print_client($tableAgence=[], $tableClient=[], $tableCompte=[]){ // aff
 function sall($array=[]){ // range dans l'ordre les tableaux
 
     // Table Client
-    for($i=1 ; $i<count($array[1])-1 ; $i++){ // Trie par Id Agence
-        for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
-            $x=0;
-            ($array[1][$i][0]>$array[1][$j][0] && $i<$j) ? $x=$array[1][$i] and $array[1][$i]=$array[1][$j] and $array[1][$j]=$x and $i-- : null ;
+
+        for($i=1 ; $i<count($array[1])-1 ; $i++){ // Trie par Id Agence
+            for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+                $x=0;
+                if($array[1][$i][0]>$array[1][$j][0] && $i<$j && $i!=$j){
+                    $x=$array[1][$i];
+                    $array[1][$i]=$array[1][$j];
+                    $array[1][$j]=$x;
+                    echo("tri agence");
+                }
+            }
         }
-    }
+
+        for($i=1 ; $i<count($array[1])-1 ; $i++){ // Trie par Id Client
+            for($j=1 ; $j<count($array[1])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
+                $x=0;
+                if(substr($array[1][$i][1],5)>substr($array[1][$j][1],5) && $array[1][$i][0]==$array[1][$j][0] && $i<$j && $i!=$j){
+                    $x=$array[1][$i];
+                    $array[1][$i]=$array[1][$j];
+                    $array[1][$j]=$x;
+                    echo("tri client");
+                }
+            }
+        }
 
     // Table Compte
     for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Agence
@@ -714,14 +735,12 @@ function sall($array=[]){ // range dans l'ordre les tableaux
         }
     }
 
-    /*
     for($i=1 ; $i<count($array[2])-1 ; $i++){ // Trie par Id Compte (normalement inutile)
         for($j=1 ; $j<count($array[2])-1 ; $j++){ // trie les valeures une par une et les range dans l'ordre croissant
             $x=0;
             ($array[2][$i][2]>$array[2][$j][2] && $array[2][$i][1]==$array[2][$j][1] && $array[2][$i][0]==$array[2][$j][0] && $i<$j) ? $x=$array[2][$i] and $array[2][$i]=$array[2][$j] and $array[2][$j]=$x : null ;
         }
     }
-    */
 
     return $array;
 }

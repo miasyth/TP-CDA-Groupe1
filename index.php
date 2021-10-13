@@ -22,20 +22,19 @@ while (true) {
         };
     switch ($choixMenu){
         case 8 :
+            $bdd=sall($bdd);
+            clall($bdd);
             exit;
         case 1:
             $bdd[0]=add_agence($bdd[0]);
-            $bdd=sall($bdd);
             clall($bdd);
             break;
         case 2:
             $bdd[1]=add_client($bdd[0],$bdd[1]);
-            $bdd=sall($bdd);
             clall($bdd);
             break;
         case 3:       
             $bdd[2]=add_compte($bdd[0],$bdd[1],$bdd[2]);
-            $bdd=sall($bdd);
             clall($bdd);
             break;
         case 4:

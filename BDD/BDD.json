@@ -49,7 +49,7 @@
                 },
                 {
                     "IdClients": "LC001002",
-                    "nom": "Le goff",
+                    "nom": "Le Goff",
                     "prenom": "Christophe",
                     "dateNaiss": "25/12/1998",
                     "sexe": "H",
@@ -91,7 +91,7 @@
             "Clients": [
                 {
                     "IdClients": "CN002001",
-                    "nom": "C",
+                    "nom": "Cantrelle",
                     "prenom": "Nicolas",
                     "dateNaiss": "25/12/2000",
                     "sexe": "H",
