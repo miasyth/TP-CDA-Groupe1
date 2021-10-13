@@ -1,64 +1,44 @@
 /*
 
-function sendData(data) {
-    let XHR = new XMLHttpRequest();
-    let urlEncodedData = "";
-    let urlEncodedDataPairs = [];
-    let name;
-  
-    // Transformez l'objet data en un tableau de paires clé/valeur codées URL.
-    for(name in data) {
-      urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
-    }
-  
-    // Combinez les paires en une seule chaîne de caractères et remplacez tous
-    // les espaces codés en % par le caractère'+' ; cela correspond au comportement
-    // des soumissions de formulaires de navigateur.
-    urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
-  
-    // Définissez ce qui se passe en cas de succès de soumission de données
-    XHR.addEventListener('load', function(event) {
-      alert('Ouais ! Données envoyées et réponse chargée.');
-    });
-  
-    // Définissez ce qui arrive en cas d'erreur
-    XHR.addEventListener('error', function(event) {
-      alert('Oups! Quelque chose s\'est mal passé.');
-    });
-  
-    // Configurez la requête
-    XHR.open('POST', 'https://example.com/cors.php');
-  
-    // Ajoutez l'en-tête HTTP requise pour requêtes POST de données de formulaire
-    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  
-    // Finalement, envoyez les données.
-    XHR.send(urlEncodedData);
-  }
-*/
-
-const BDDJSON= "/image/BDD.json"; // permettra d'acceder a la base de donnee
+const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
+const TESTJSON= "../compte/TEST.json"; // permet d'acceder a la base de donnee
 
 
-fetch(BDDJSON) // lecture de la BDD
-.then(response => response.json())
-.then(data => {
-  console.log(data);
-  document.querySelector("#a").innerText=data._commentaires[3]+"\n";
-  document.querySelector("#a").innerText+=data._commentaires[2];
-})
-
-let BDD
-
-function getData(url, cb) {
+// lecture de Json v2
+let getData=(url, cb)=>{ // lecture de BDD
   fetch(url)
     .then(response => response.json())
-    .then(result => cb(result));
+    .then(result => cb(result))
+}
+//
+
+let putData=(url, BDD)=>{ // ecriture de BDD
+
+  try{
+    
+  const myInit = { // parametre de fetch
+    method: 'post',
+    body: JSON.stringify({BDD})
+  };
+
+  fetch(url, myInit) // ecriture de BDD
+    .then(res => res.json())
+    .then(res => console.log(res))
+  } catch (error){
+    console.error(error);
+  }
 }
 
-getData(BDDJSON, (BDD) => console.log(BDD.client))
+// --------------------------------------------------------
+
+getData(BDDJSON, (BDD) => console.log(BDD.creaClient)) // Permet l'écriture du client
 
 
+let newClient = JSON.stringify(creaClient);
+let creatClient = JSON.parse(newClient);
+console.log(creaClient)
+
+/* Traduction en javascript c'est l'utilisation d'objet prédefini !!!!
 
 let client = [{
     nom : "Exemple : Dupont" ,
@@ -86,7 +66,75 @@ let creaClient = [{
     mail : prompt("Votre mail (exemple@exe.com) : ") ,
 }];
 
+*/
+/*
+WebSocket WebSocket(
+  in DOMString url,
+  in optional DOMString protocols
+);
 
-let newClient = JSON.stringify(creaClient);
-let creatClient = JSON.parse(newClient);
-console.log(creaClient)
+WebSocket WebSocket(
+  in DOMString url,
+  in optional DOMString[] protocols
+);
+
+*/ 
+
+
+// Envoi d'un texte à tous les utilisateurs à travers le serveur
+function sendText() {
+  // Création d'un objet msg qui contient les données
+  // dont le serveur a besoin pour traiter le message
+  var msg = {
+    type: "message",
+    text: document.getElementById("text").value,
+    id:   clientID,
+    date: Date.now()
+  };
+
+  // Envoi de l'objet msg à travers une chaîne formatée en JSON
+  exampleSocket.send(JSON.stringify(msg));
+
+  // Efface le texte de l'élément input
+  // afin de recevoir la prochaine ligne de texte
+  // que l'utilisateur va saisir
+  document.getElementById("text").value = "";
+}
+
+let exampleSocket = new WebSocket("ws://www.example.com/socketserver", ["protocolOne", "protocolTwo"]);
+
+exampleSocket.onmessage = function(event) {
+  let f = document.getElementById("chatbox").contentDocument;
+  let text = "";
+  let msg = JSON.parse(event.data);
+  let time = new Date(msg.date);
+  let timeStr = time.toLocaleTimeString();
+
+  switch(msg.type) {
+    case "id":
+      clientID = msg.id;
+      setUsername();
+      break;
+    case "username":
+      text = "<b>User <em>" + msg.nom + "</em> signed in at " + timeStr + "</b><br>";
+      break;
+    case "message":
+      text = "(" + timeStr + ") <b>" + msg.nom + "</b>: " + msg.text + "<br>";
+      break;
+    case "rejectusername":
+      text = "<b>Votre nom est déjà utiliser <em>" + msg.nom + "</em> choissisez un autre nom.</b><br>"
+      break;
+    case "userlist":
+      var ul = "";
+      for (i=0; i < msg.users.length; i++) {
+        ul += msg.users[i] + "<br>";
+      }
+      document.getElementById("userlistbox").innerHTML = ul;
+      break;
+  }
+
+  if (text.length) {
+    f.write(text);
+    document.getElementById("chatbox").contentWindow.scrollByPages(1);
+  }
+};

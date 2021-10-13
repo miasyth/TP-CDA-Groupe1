@@ -14,19 +14,19 @@
 <?php
     $tab = [];
 
-    $Ag = $_POST['Agence'];
+    $Ag = $_POST["Agence"];
     $tab=$_POST;
     
-    $Ad = $_POST['Adresse'];
+    $Ad = $_POST["Adresse"];
     $tab=$_POST;
     
-    $Cp = $_POST['Code_Postal'];
+    $Cp = $_POST["Code_Postal"];
     $tab=$_POST;
     
-    $T = $_POST['Téléphone'];
+    $T = $_POST["Téléphone"];
     $tab=$_POST;
     
-    $M = $_POST['Mail'];
+    $M = $_POST["Mail"];
     $tab=$_POST;
     
     foreach($tab as $key => $val){
