@@ -10,6 +10,8 @@ let getData=(url, cb)=>{ // lecture de BDD
 }
 //
 
+/*
+
 let putData=(url, BDD)=>{ // ecriture de BDD
 
   try{
@@ -26,6 +28,7 @@ let putData=(url, BDD)=>{ // ecriture de BDD
     console.error(error);
   }
 }
+*/
 
 // --------------------------------------------------------
 
