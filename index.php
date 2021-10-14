@@ -2,9 +2,10 @@
 
 require "library.php";
 
-$bdd=opall();
-
 while (true) {
+
+    $bdd=opall();
+
     echo ("\n 1- Créer une agence." . 
         "\n 2- Créer un client." . 
         "\n 3- Créer un compte bancaire." . 
@@ -21,33 +22,32 @@ while (true) {
         };
     switch ($choixMenu){
         case 8 :
+            $bdd=sall($bdd);
+            clall($bdd);
             exit;
         case 1:
             $bdd[0]=add_agence($bdd[0]);
-            $bdd=sall($bdd);
             clall($bdd);
             break;
         case 2:
             $bdd[1]=add_client($bdd[0],$bdd[1]);
-            $bdd=sall($bdd);
             clall($bdd);
             break;
         case 3:       
             $bdd[2]=add_compte($bdd[0],$bdd[1],$bdd[2]);
-            $bdd=sall($bdd);
             clall($bdd);
             break;
         case 4:
-            search_compte($bdd[0],$bdd[1],$bdd[2]);
+            search_compte($bdd[2]);
             break;
         case 5:
-            search_client($bdd[0],$bdd[1]);
+            search_client($bdd[1]);
             break;
         case 6:
-            list_comptes($bdd[0],$bdd[1],$bdd[2]);
+            list_comptes($bdd[1],$bdd[2]);
             break;
         case 7:
-            print_client($bdd[0],$bdd[1],$bdd[2]);
+            print_client($bdd[1],$bdd[2]);
             break;
     };
 }
