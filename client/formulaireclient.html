@@ -16,21 +16,21 @@
             <button><a href="siteban.html">Acceuil</a></button>
         </div>
         
-        <div id="head"> <center><h2>--Type d'agence--</h2></center>             
-            <select id='id' name="city_id" onchange="show_city()">                 
-                <option selected value='0'>Choisissez votre Agence par rapport à votre ville</option>                 
-                <option value='1'>Lille(59)</option>                 
-                <option value='2'>Montpellier(34)</option>                 
-                <option value='3'>Marseille(13)</option>                 
-                <option value='4'>Lyon(69)</option>                 
-                <option value='5'>Bordeaux(33)</option>                 
-                <option value='6'>Toulouse(31)</option>                 
-                <option value='7'>Nice(83)</option>                 
-                <option value='8'>Paris(75)</option>                 
-                <option value='9'>Reims(51)</option>                 
-                <option value='10'>Strasbourg(68)</option>                 
-                <option value='11'>Nantes(44)</option>                 
-                <option value='12'>Rennes(35)</option>             
+        <div id="head"> <center><h2>--Choix de votre agence--</h2></center>             
+            <select id='id' name="agence_id" onchange="show_city()">                 
+                <option selected value='0'>Choisissez votre agence bancaire : </option>                 
+                <option value='HSBC'>HSBC</option>
+                <option value='Banque Postale'>Banque Postale</option>                                                   
+                <option value='IBM'>IBM</option>                 
+                <option value='Le Credit Lyonnais'>Le Credit Lyonnais</option>                 
+                <option value="Caisse d'épargne">Caisse d'épargne</option>                 
+                <option value='Credit agricole'>Crédit agricole</option>                 
+                <option value='BNP Paribas'>BNP Paribas</option>                 
+                <option value='Hello Bank!'>Hello Bank!</option>                 
+                <option value='Societe generale'>Société générale</option>                 
+                <option value='Axa'>Axa</option>                 
+                <option value='Orange Bank'>Orange Bank</option>                 
+                <option value='Credit mutuelle'>Crédit mutuelle</option>  
             </select>         
         </div>
         
@@ -38,7 +38,7 @@
         <hr>
         <center><legend><h2>--Identité--</h2></legend></center>
         <div>
-            <label style="background-color: #bebebe;" for="Nom">Votre Nom ou Nom de jeune fille : </label>
+            <label style="background-color: #bebebe;" for="Nom">Votre nom d'usage : </label>
             <input type="text" id="id" name="name_id">
         </div>
         
@@ -51,7 +51,7 @@
         
         <!--L'âge du client-->
         <div>
-            <label style="background-color:#bebebe;" for="Age"> Votre âge : </label>
+            <label style="background-color:#bebebe;" for="Age"> Votre date de naissance : </label>
             <input type="text" id="id" name="age_id">
         </div>
         
@@ -83,7 +83,7 @@
         <!--Adresse-->
         <center><legend><h2>--Adresse--</h2></legend></center>
         <div>
-            <label style="background-color: #bebebe;" for="Adresse">Adresse : </label>
+            <label style="background-color: #bebebe;" for="Adresse">Adresse complète : </label>
             <input type="text" id="id" name="adress_id">
         </div>
         
@@ -101,21 +101,15 @@
         <!--Portable-->
         <center><legend><h2>--Contact--</h2></legend></center>
         <div>
-            <label style="background-color: #bebebe;" for="Port">Télephone portable : </label>
-            <input type="text" id="id" name="port_id">
+            <label style="background-color: #bebebe;" for="Port">Contact téléphonique : </label>
+            <input type="text" id="id" name="tel_id">
         </div>
         
-        <!--Fixe-->
-        
-        <div>
-            <label style="background-color: #bebebe;" for="Fix">Télephone fix : </label>
-            <input type="text" id="id" name="fixe_id">
-        </div>
         
         <!--Mail-->
 
         <div>
-            <label style="background-color: #bebebe;" for="Mail">Mail : </label>
+            <label style="background-color: #bebebe;" for="Mail">e-Mail : </label>
             <input type="text" id="id" name="mail_id">
         </div>
         
@@ -126,7 +120,7 @@
         <br>
 
         <div>
-            <button type="submit"> --Créer-- </button>
+            <button type="submit"> --Envoyer-- </button>
         </div>
     </form>
 </body>

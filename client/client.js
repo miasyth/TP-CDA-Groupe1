@@ -1,7 +1,4 @@
-/*
-
 const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
-const TESTJSON= "../compte/TEST.json"; // permet d'acceder a la base de donnee
 
 
 // lecture de Json v2
@@ -39,19 +36,6 @@ let creatClient = JSON.parse(newClient);
 console.log(creaClient)
 
 /* Traduction en javascript c'est l'utilisation d'objet prédefini !!!!
-
-let client = [{
-    nom : "Exemple : Dupont" ,
-    prenom : "Exemple : Jacques" ,
-    dateDeNaiss : "Votre date de naissance en format JJ/MM/AAAA : ",
-    sexe : "Homme || Femme",
-    adresse : "Exemple : 20 rue du Temple",
-    ville : "Exemple : Paris",
-    codePost : "Exemple : 75000",
-    telPort : "Exemple : 06.01.01.01.01",
-    telFixe : "Exemple : 01.45.02.02.02",
-    mail : "Exemple : exemple@exe.com",
-}];
 
 let creaClient = [{
     nom : prompt("Votre nom : ") ,

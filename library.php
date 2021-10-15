@@ -315,6 +315,12 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
 
     $tableClient[$count][++$i]=readline("Entrez la date de naissance du client (jj/mm/aaaa): ");
 
+    if (!preg_match("/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/", $tableClient[$count][$i]))
+    {
+        $error = true;
+        echo("Veuillir saisir votre date de naissance sous ce format JJ/MM/AAAA");
+    }
+
     if($tableClient[$count][$i]==null){
         return $tablebackup;
     }
@@ -332,7 +338,13 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
     //
 
     $tableClient[$count][++$i]=readline("Entrez l'adresse du client (numero et rue): ");
-
+    if( preg_match('#[0-9]+[a-z]+ [a-z]+ [0-9]{5}#i', $tableClient[$count][$i]) ){
+        echo( 'Bonne adresse !');
+    }
+        
+    else{
+        echo('Veuillez saisir une adresse valide (Exemple : 1 avenue du tour');
+    }
     if($tableClient[$count][$i]==null){
         return $tablebackup;
     }
@@ -344,24 +356,50 @@ function add_client($tableAgence=[], $tableClient=[]){ // ajoute un client
     }
 
     $tableClient[$count][++$i]=readline("Entrez le code postal du client: ");
-
+    if ( preg_match ("~^[0-9]{5}$~",$tableClient[$count][$i])){
+        echo "Vrai";
+    }
+    else{
+        echo "Faux";
+    }
+    
     if($tableClient[$count][$i]==null){
         return $tablebackup;
     }
 
     $tableClient[$count][++$i]=readline("Entrez le telephone portable du client: ");
-
+    if(preg_match("#[0][6-7][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tableClient[$count][$i])){
+        echo ("Votre numéro de téléphone portable est : $tableClient[$count][$i]");
+    }
+    else{
+        echo ("Veuillez saisir un numéro de téléphone valide : $tableClient[$count][$i]");
+    }
+       
     if($tableClient[$count][$i]==null){
         return $tablebackup;
     }
 
     $tableClient[$count][++$i]=readline("Entrez le telephone fixe du client: ");
-
+    if(preg_match("#[0][1-5][- \.?]?([0-9][0-9][- \.?]?){4}$#", $tableClient[$count][$i])){
+        echo ("Votre numéro de téléphone fixe est : $tableClient[$count][$i]");
+    }
+    else{
+        echo ("Veuillez saisir un numéro de téléphone valide : $tableClient[$count][$i]");
+    }
+       
     if($tableClient[$count][$i]==null){
         return $tablebackup;
     }
 
     $tableClient[$count][++$i]=readline("Entrez l'adresse e-mail du client: ");
+
+    if(preg_match("/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$/", $tableClient[$count][$i]))  {
+        echo ("L'adresse email '$tableClient[$count][$i]' est valide.");
+      } 
+  else {
+          echo ("L'adresse email '$tableClient[$count][$i]' est invalide.");
+  }
+  
 
     if($tableClient[$count][$i]==null){
         return $tablebackup;
