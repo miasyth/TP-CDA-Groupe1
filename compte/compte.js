@@ -21,23 +21,8 @@ getData(BDDJSON, BDD => { // actions
 
 let putData=(url, BDD)=>{ // ecriture de BDD
 
-  try{
-    
-  const myInit = { // parametre du fetch
-    method: 'POST',
-    body: JSON.stringify({BDD})
-  };
-
-  fetch(url, myInit) // ecriture de BDD
-    .then(res => res.json())
-    .then(res => console.log(res))
-  } catch (error){
-    console.error(error);
-  }
+  
 }
-
-
-
 
 let Agences={
   id:"001"
