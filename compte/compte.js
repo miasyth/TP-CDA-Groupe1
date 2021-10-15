@@ -8,16 +8,23 @@ let getData=(url, cb)=>{ // lecture de BDD
     .then(response => response.json())
     .then(result => cb(result))
 }
+
+
+getData(BDDJSON, BDD => { // actions
+  console.log(BDD.Agences);
+  document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
+  document.querySelector("#a").innerText+=BDD._commentaires[3];
+})
 //
 
-/*
+// --------------------------------------------------------
 
 let putData=(url, BDD)=>{ // ecriture de BDD
 
   try{
     
-  const myInit = { // parametre de fetch
-    method: 'post',
+  const myInit = { // parametre du fetch
+    method: 'POST',
     body: JSON.stringify({BDD})
   };
 
@@ -28,23 +35,17 @@ let putData=(url, BDD)=>{ // ecriture de BDD
     console.error(error);
   }
 }
-*/
 
-// --------------------------------------------------------
+
+
 
 let Agences={
   id:"001"
 }
 
-//putData(TESTJSON, Agences);
+putData(TESTJSON, Agences); // ecriture de BDD
 
 // --------------------------------------------------------
-
-getData(BDDJSON, BDD => { // actions
-  console.log(BDD.Agences);
-  document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
-  document.querySelector("#a").innerText+=BDD._commentaires[3];
-})
 
 let showAgences=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
   
