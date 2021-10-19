@@ -9,6 +9,7 @@
 <body>
 <?php
 
+require "classclient.php" ;
 
 echo json_encode($_POST);
 
