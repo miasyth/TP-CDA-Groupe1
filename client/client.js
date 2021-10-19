@@ -1,3 +1,59 @@
+/*import ('classclient.php') Require en JavaScript*/ 
+
+class Client {
+
+  constructor(id_client,name,prenom,age,sexe,adresse,code,tel,mail){
+      $this.id=id_client;
+      $this.id1=name;
+      $this.id2=prenom;
+      $this.id3=age;
+      $this.id4=sexe;
+      $this.id5=adresse;
+      $this.id6=code;
+      $this.id7=tel;
+      $this.id8=mail;
+  }
+  
+  /*
+  public function getNom(){
+      return $this->id;
+  }
+  public function getTitle(){
+      return $this->id1;
+  }
+  public function getAuteur(){
+      return $this->id2;
+  }
+  public function getPrix(){
+      return $this->id3;
+  }*/
+  public function setName(string name){
+      $this->id1=name;
+  }
+  public function setPrenom(string prenom){
+      $this->id2=prenom;
+  }
+  public function setAge(string age){
+      $this->id3=age;
+  }
+  public function setSexe(int sexe){
+      $this->id4=sexe;
+  }
+  public function setAdresse(string adress){
+      $this->id5=adress;
+  }
+  public function setCode(string code){
+      $this->id6=code;
+  }
+  public function setTel(string tel){
+      $this->id7=tel;
+  }
+  public function setMail(string mail){
+      $this->id8=mail;
+  }
+}
+
+
 const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
 const TESTJSON= "../compte/TEST.json"; // permet d'acceder a la base de donnee
 
@@ -41,7 +97,7 @@ let Agences={
 // --------------------------------------------------------
 
 getData(BDDJSON, BDD => { // actions
-  console.log(BDD.Client);
+  console.log(BDD.Agences);
   document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
   document.querySelector("#a").innerText+=BDD._commentaires[3];
 })
@@ -55,114 +111,85 @@ let showAgences=(value)=>{ // donnera les agences qui existent pour la liste der
   */
  
 }
-
+/*
 function pregmatch(
   
 )
+*/
 
-
-let addClient=(Fclient,Fagence)=>{ // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
+let addClient=(Fagence,Fclient)=>{ // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
   
 
   let IdAgence= document.Fagence.IdAgence.value; // recupere IdAgence
 
   // doit verifier si l'agence sélectionner existe et n'a pas trop de client
 
-  let Client= { // cree l'objet Client avec les valeurs du formulaire
-    Type: document.Fclient.type.value,
-    }
+  let Client1=new Client ( // cree l'objet Client avec les valeurs du formulaire
+    Idagence: document.Fagence.IdAgence.value,
+    IdClient: 0,
+    nom: document.Fclient.nom.value,
+    prenom: document.Fclient.prenom.value,
+    date: document.Fclient.date.value,
+    sexe: document.Fclient.sexe.value,
+    adress: document.Fclient.adress.value,
+    cdp: document.Fclient.cdp.value,
+    tel: document.Fclient.tel.value,
+    mail: document.Fclient.mail.value
+  )
 
-  let Type=""; // String pour le message final
 
+  console.log(Client.Idagence);
 
-  if(IdAgence==""){ // verifie l'entree de l'agence
+  if(Client.Idagence==0){
     alert("Vous n'avez pas selectionne d'agence");
     return;
   }
-
-  switch (Client.Type){ // vérifie les entrées du clients 
-    
-    case "Nom":
-
-      Type="Votre nom d'usage"
-    break;
-    
-    case "Prenom":
-
-      Type="Votre prénom"
-    break;
-    
-    case "Age":
-
-      Type="Saisir votre date de naissance"
-      
-    break;  
-    
-    case "Sexe":
-
-      Type="Veuillez renseigner votre sexe"
-    break;
-    
-    case "Adress":
-
-      Type="Veuillez renseigner votre adresse complète sans le code postal"
-    break;
-    
-    case "Code":
-
-      Type="Saisir votre code postal"
-    break;
-    
-    case "Tel":
-
-      Type="Veuillez saisir votre moyen de communication téléphonique"
-    break;
-    
-    case "Mail":
-
-      Type="Veuillez saisir votre adresse e-Mail"
-    break;
-    
-    default:
-
-      alert("Vous n'avez pas selectionné ou renseigné l'élement correspondant");
-      return;
+  
+  if(Client.nom==0){
+    alert("Vous n'avez pas renseigner votre nom");
+    return;
   }
-
-
-if(Client.agence==""){ // met "0" dans le cas où le agence n'est pas renseigné
-  Client.agence=0;
-}
-else if(Client.nom==""){
-  Client.nom=0;
-}
-else if(Client.prenom==""){
-  Client.prenom=0;
-}
-else if(Client.age==""){
-  Client.age=0;
-}
-else if(Client.sexe==""){
-  Client.sexe=0;
-}
-else if(Client.adress==""){
-  Client.adress=0;
-}
-else if(Client.cdp==""){
-  Client.cdp=0;
-}
-else if(Client.tel==""){
-  Client.tel=0;
-}
-else if(Client.mail==""){
-  Client.mail=0;
-}
+  
+  if(Client.prenom==0){
+    alert("Vous n'avez pas renseignez votre prénom");
+    return;
+  }
+  
+  if(Client.date==0){
+    alert("Vous n'avez pas renseigner votre date de naissance");
+    return;
+  }
+  
+  if(Client.sexe==0){
+    alert("Sélectionnez votre sexe");
+    return;
+  }
+  
+  if(Client.adress==0){
+    alert("Vous n'avez pas renseigner votre adresse");
+    return;
+  }
+  
+  if(Client.cdp==0){
+    alert("Vous n'avez pas renseignez votre code postale");
+    return;
+  }
+  
+  if(Client.tel==0){
+    alert("Veuillez ajouté un moyen de contact téléphonique");
+    return;
+  }
+  
+  if(Client.mail==0){
+    alert("Veuillez ajouté une adresse mail");
+    return;
+  }
 
   // resets all forms
   document.getElementById("Fagence").reset();
   document.getElementById("Fclient").reset();
   
-  alert("Vous venez de creer votre compte client : "+IdClient+Type+"ayant pour nom et prénom : "+nom.prenom);
+  alert("Vous venez de creer votre compte client qui a pour nom et prénom : "+Client.nom+" "+Client.prenom);
 }
 
 
