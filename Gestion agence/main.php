@@ -10,22 +10,22 @@
 </head>
 
 <body>
-
-
 <?php
-    $Ag = $_POST["Agence"];
-    $tab=$_POST;
+    require ("Agence.php");
+
+    $Agence = new Agence (" ", " ", 0 , 0 , " ");
+
+    $Agence -> setAgence ($Ag = $_POST["Agence"]);
+
+    $Agence -> setAdresse ($Ad = $_POST["Adresse"]);
+
+    $Agence -> setCodePostal ($Cp = $_POST["Code_Postal"]);
+
+    $Agence -> setTéléphone ($T = $_POST["Téléphone"]);
+
+    $Agence -> setMail ($M = $_POST["Mail"]);
+
     
-    $Ad = $_POST["Adresse"];
-    $tab=$_POST;
-    
-    $Cp = $_POST["Code_Postal"];
-    $tab=$_POST;
-    
-    $T = $_POST["Téléphone"];
-    $tab=$_POST;
-    
-    $M = $_POST["Mail"];
     $tab=$_POST;
     
     foreach($tab as $key => $val){
@@ -33,7 +33,6 @@
         print_r("$val |");
     }
     
-
     $fp = fopen('agence.json', 'w');
     fwrite($fp, json_encode($data));
     fclose($fp);
