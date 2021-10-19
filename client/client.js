@@ -1,5 +1,3 @@
-/*
-
 const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
 const TESTJSON= "../compte/TEST.json"; // permet d'acceder a la base de donnee
 
@@ -11,6 +9,8 @@ let getData=(url, cb)=>{ // lecture de BDD
     .then(result => cb(result))
 }
 //
+
+/*
 
 let putData=(url, BDD)=>{ // ecriture de BDD
 
@@ -28,113 +28,155 @@ let putData=(url, BDD)=>{ // ecriture de BDD
     console.error(error);
   }
 }
+*/
 
 // --------------------------------------------------------
 
-getData(BDDJSON, (BDD) => console.log(BDD.creaClient)) // Permet l'écriture du client
-
-
-let newClient = JSON.stringify(creaClient);
-let creatClient = JSON.parse(newClient);
-console.log(creaClient)
-
-/* Traduction en javascript c'est l'utilisation d'objet prédefini !!!!
-
-let client = [{
-    nom : "Exemple : Dupont" ,
-    prenom : "Exemple : Jacques" ,
-    dateDeNaiss : "Votre date de naissance en format JJ/MM/AAAA : ",
-    sexe : "Homme || Femme",
-    adresse : "Exemple : 20 rue du Temple",
-    ville : "Exemple : Paris",
-    codePost : "Exemple : 75000",
-    telPort : "Exemple : 06.01.01.01.01",
-    telFixe : "Exemple : 01.45.02.02.02",
-    mail : "Exemple : exemple@exe.com",
-}];
-
-let creaClient = [{
-    nom : prompt("Votre nom : ") ,
-    prenom : prompt("Votre prénom : ") ,
-    dateDeNaiss : prompt("Votre date de naissance type JJ/MM/AAAA : ") ,
-    sexe : prompt(" Femme ou Homme : ") ,
-    adresse : prompt("Votre adresse (numéro + rue) : ") ,
-    ville : prompt("Votre ville : ") ,
-    codePost : prompt("Votre code Postale : ") ,
-    telPort : prompt("Votre numéro de portable (06.01.01.01.01) : ") ,
-    telFixe : prompt("Votre numéro fixe (02.01.01.01.01) : ") ,
-    mail : prompt("Votre mail (exemple@exe.com) : ") ,
-}];
-
-*/
-/*
-WebSocket WebSocket(
-  in DOMString url,
-  in optional DOMString protocols
-);
-
-WebSocket WebSocket(
-  in DOMString url,
-  in optional DOMString[] protocols
-);
-
-*/ 
-
-
-// Envoi d'un texte à tous les utilisateurs à travers le serveur
-function sendText() {
-  // Création d'un objet msg qui contient les données
-  // dont le serveur a besoin pour traiter le message
-  var msg = {
-    type: "message",
-    text: document.getElementById("text").value,
-    id:   clientID,
-    date: Date.now()
-  };
-
-  // Envoi de l'objet msg à travers une chaîne formatée en JSON
-  exampleSocket.send(JSON.stringify(msg));
-
-  // Efface le texte de l'élément input
-  // afin de recevoir la prochaine ligne de texte
-  // que l'utilisateur va saisir
-  document.getElementById("text").value = "";
+let Agences={
+  id:"001"
 }
 
-let exampleSocket = new WebSocket("ws://www.example.com/socketserver", ["protocolOne", "protocolTwo"]);
+//putData(TESTJSON, Agences);
 
-exampleSocket.onmessage = function(event) {
-  let f = document.getElementById("chatbox").contentDocument;
-  let text = "";
-  let msg = JSON.parse(event.data);
-  let time = new Date(msg.date);
-  let timeStr = time.toLocaleTimeString();
+// --------------------------------------------------------
 
-  switch(msg.type) {
-    case "id":
-      clientID = msg.id;
-      setUsername();
-      break;
-    case "username":
-      text = "<b>User <em>" + msg.nom + "</em> signed in at " + timeStr + "</b><br>";
-      break;
-    case "message":
-      text = "(" + timeStr + ") <b>" + msg.nom + "</b>: " + msg.text + "<br>";
-      break;
-    case "rejectusername":
-      text = "<b>Votre nom est déjà utiliser <em>" + msg.nom + "</em> choissisez un autre nom.</b><br>"
-      break;
-    case "userlist":
-      var ul = "";
-      for (i=0; i < msg.users.length; i++) {
-        ul += msg.users[i] + "<br>";
-      }
-      document.getElementById("userlistbox").innerHTML = ul;
-      break;
+getData(BDDJSON, BDD => { // actions
+  console.log(BDD.Client);
+  document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
+  document.querySelector("#a").innerText+=BDD._commentaires[3];
+})
+
+let showAgences=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
+  
+  /*
+  for(val in Client){
+    console.log(val);
+  }
+  */
+ 
+}
+
+function pregmatch(
+  
+)
+
+
+let addClient=(Fclient,Fagence)=>{ // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
+  
+
+  let IdAgence= document.Fagence.IdAgence.value; // recupere IdAgence
+
+  // doit verifier si l'agence sélectionner existe et n'a pas trop de client
+
+  let Client= { // cree l'objet Client avec les valeurs du formulaire
+    Type: document.Fclient.type.value,
+    }
+
+  let Type=""; // String pour le message final
+
+
+  if(IdAgence==""){ // verifie l'entree de l'agence
+    alert("Vous n'avez pas selectionne d'agence");
+    return;
   }
 
-  if (text.length) {
-    f.write(text);
-    document.getElementById("chatbox").contentWindow.scrollByPages(1);
+  switch (Client.Type){ // vérifie les entrées du clients 
+    
+    case "Nom":
+
+      Type="Votre nom d'usage"
+    break;
+    
+    case "Prenom":
+
+      Type="Votre prénom"
+    break;
+    
+    case "Age":
+
+      Type="Saisir votre date de naissance"
+      
+    break;  
+    
+    case "Sexe":
+
+      Type="Veuillez renseigner votre sexe"
+    break;
+    
+    case "Adress":
+
+      Type="Veuillez renseigner votre adresse complète sans le code postal"
+    break;
+    
+    case "Code":
+
+      Type="Saisir votre code postal"
+    break;
+    
+    case "Tel":
+
+      Type="Veuillez saisir votre moyen de communication téléphonique"
+    break;
+    
+    case "Mail":
+
+      Type="Veuillez saisir votre adresse e-Mail"
+    break;
+    
+    default:
+
+      alert("Vous n'avez pas selectionné ou renseigné l'élement correspondant");
+      return;
   }
-};
+
+
+if(Client.agence==""){ // met "0" dans le cas où le agence n'est pas renseigné
+  Client.agence=0;
+}
+else if(Client.nom==""){
+  Client.nom=0;
+}
+else if(Client.prenom==""){
+  Client.prenom=0;
+}
+else if(Client.age==""){
+  Client.age=0;
+}
+else if(Client.sexe==""){
+  Client.sexe=0;
+}
+else if(Client.adress==""){
+  Client.adress=0;
+}
+else if(Client.cdp==""){
+  Client.cdp=0;
+}
+else if(Client.tel==""){
+  Client.tel=0;
+}
+else if(Client.mail==""){
+  Client.mail=0;
+}
+
+  // resets all forms
+  document.getElementById("Fagence").reset();
+  document.getElementById("Fclient").reset();
+  
+  alert("Vous venez de creer votre compte client : "+IdClient+Type+"ayant pour nom et prénom : "+nom.prenom);
+}
+
+
+/* 
+// archives
+
+
+// lecture de Json v1
+
+fetch(BDDJSON) // lecture de BDD
+.then(response => response.json())
+.then(data => {
+  // actions
+  console.log(data);
+})
+
+*/
