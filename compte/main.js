@@ -1,5 +1,4 @@
 const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
-const TESTJSON= "../compte/TEST.json"; // permet d'acceder a la base de donnee
 
 
 // lecture de Json v2
@@ -19,16 +18,7 @@ getData(BDDJSON, BDD => { // actions
 
 // --------------------------------------------------------
 
-let putData=(url, BDD)=>{ // ecriture de BDD
-
-  
-}
-
-let Agences={
-  id:"001"
-}
-
-putData(TESTJSON, Agences); // ecriture de BDD
+// ecriture de BDD
 
 // --------------------------------------------------------
 

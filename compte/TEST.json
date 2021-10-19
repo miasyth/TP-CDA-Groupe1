@@ -1,6 +1,0 @@
-{"_commentaires": [
-    "a lire pour la lecture et l'ecriture des cles https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Useful_string_methods",
-    "format agence (numero compte (sur 3 chiffres)) auto-incrementes. Exemples: (001, 002, 003, ...)\n",
-    "format client (2 lettres et 6 chiffres) auto-incrementes (initiale nom+prenom, cle agence, numero client (sur 3 chiffres)). Exemples: (FC001001, HM001002, ML002001, ...)\n",
-    "format compte (cle client (sans lettres), numero compte (sur 3 chiffres), type de compte (sur 2 chiffres)). Exemples: (00100100101, 00100100202, 00100200103...)"
-]}
