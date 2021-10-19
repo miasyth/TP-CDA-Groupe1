@@ -12,6 +12,7 @@
 <body>
 <?php
     require ("Agence.php");
+    $chemin = "Agence.php";
 
     $Agence = new Agence (" ", " ", 0 , 0 , " ");
 
@@ -25,7 +26,6 @@
 
     $Agence -> setMail ($M = $_POST["Mail"]);
 
-    
     $tab=$_POST;
     
     foreach($tab as $key => $val){
@@ -33,10 +33,15 @@
         print_r("$val |");
     }
     
-    $fp = fopen('agence.json', 'w');
-    fwrite($fp, json_encode($data));
-    fclose($fp);
-?>
+    /*$fp = fopen('agence.json', 'w');
+    fwrite($fp, json_encode($data, JSON_PRETTY_PRINT));
+    fclose($fp);*/
+
+    $json = json_encode(array_values($data));
+	file_put_contents("agence.json",$json,LOCK_EX);
+
+?>  
+
 
 <!--Voir pour transférer les valeurs dans un tableau appelé das une fonction, puis les renvoyer dans sur la page html et afficher le tout dans une case.-->
     

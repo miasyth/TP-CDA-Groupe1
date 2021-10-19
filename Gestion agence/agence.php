@@ -18,23 +18,23 @@ class Agence {
 
     //Séparation get
 
-    public function getAgence() {
+    public function getAgence() :string {
         return $this -> Agence ;
     }
 
-    public function getAdresse() {
+    public function getAdresse() :string {
         return $this -> Adresse ;
     }
 
-    public function getCodePostal() {
+    public function getCodePostal() :string {
         return $this -> CodePostal ;
     }
 
-    public function getTéléphone() {
+    public function getTéléphone() :string {
         return $this -> Téléphone ;
     }
 
-    public function getMail() {
+    public function getMail() :string {
         return $this -> Mail ;
     }
 
