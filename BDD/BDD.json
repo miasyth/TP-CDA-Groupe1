@@ -15,7 +15,7 @@
             "codePostal": "75000",
             "Clients": [
                 {
-                    "IdClients": "LC001001",
+                    "IdClient": "LC001001",
                     "nom": "Leclerc",
                     "prenom": "Charles",
                     "dateNaiss": "25/12/1998",
@@ -48,7 +48,7 @@
                     ]
                 },
                 {
-                    "IdClients": "LC001002",
+                    "IdClient": "LC001002",
                     "nom": "Le Goff",
                     "prenom": "Christophe",
                     "dateNaiss": "25/12/1998",
@@ -90,7 +90,7 @@
             "codePostal": "78459",
             "Clients": [
                 {
-                    "IdClients": "CN002001",
+                    "IdClient": "CN002001",
                     "nom": "Cantrelle",
                     "prenom": "Nicolas",
                     "dateNaiss": "25/12/2000",
@@ -111,7 +111,7 @@
                     ]
                 },
                 {
-                    "IdClients": "LF002002",
+                    "IdClient": "LF002002",
                     "nom": "Loiseau",
                     "prenom": "François",
                     "dateNaiss": "25/12/2000",
