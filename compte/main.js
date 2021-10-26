@@ -1,5 +1,6 @@
 const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
 
+// --------------------------------------------------------
 
 // lecture de Json v2
 let getData=(url, cb)=>{ // lecture de BDD
@@ -8,13 +9,14 @@ let getData=(url, cb)=>{ // lecture de BDD
     .then(result => cb(result))
 }
 
-
 getData(BDDJSON, BDD => { // actions
   console.log(BDD.Agences);
   document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
   document.querySelector("#a").innerText+=BDD._commentaires[3];
 })
-//
+
+// --------------------------------------------------------
+
 
 // --------------------------------------------------------
 
@@ -22,15 +24,23 @@ getData(BDDJSON, BDD => { // actions
 
 // --------------------------------------------------------
 
-let showAgences=(value)=>{ // donnera les agences qui existent pour la liste deroulante de Fagence
-  
-  /*
-  for(val in Client){
-    console.log(val);
-  }
-  */
- 
-}
+
+// --------------------------------------------------------
+
+// generation liste agences
+getData(BDDJSON, BDD => { // actions
+
+  BDD.Agences.forEach(currentValue => {
+    opt = document.createElement('option');
+    opt.value = currentValue.IdAgence;
+    opt.innerHTML = currentValue.nom;
+    document.querySelector("#IdAgence").appendChild(opt);
+  });
+
+  document.querySelector("#IdAgence");
+})
+
+// --------------------------------------------------------
 
 let addCompte=(Fagence,Fclient,Fcompte)=>{ // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
 
@@ -120,19 +130,21 @@ let addCompte=(Fagence,Fclient,Fcompte)=>{ // ajoutera un compte au fichier JSON
   document.getElementById("Fcompte").reset();
   
   alert("Vous venez de creer le compte : "+IdCompte+Type+Decouvert+"ayant pour solde: "+Compte.Solde+" euros.");
+
+  
 }
+
+// puts BDD in "b"
+
+getData(BDDJSON, BDD => { // actions
+  document.querySelector("#b").innerText=JSON.stringify(BDD.Agences);
+  console.log(document.querySelector("#b").innerText);
+})
 
 /* 
 // archives
 
 
-// lecture de Json v1
 
-fetch(BDDJSON) // lecture de BDD
-.then(response => response.json())
-.then(data => {
-  // actions
-  console.log(data);
-})
 
 */

@@ -11,11 +11,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="Compte.js"></script>
     <script src="main.js"></script>
+    <script src="main.php"></script>
 </head>
 
 <body style="background-color: #bebebe;">
     
     <div id="a"></div>
+    <div id="b" style="display:none">HELLO I'M INVISIBLE!</div>
 
     <div>
         <button><a href="siteban.html">Accueil</a></button>
@@ -24,11 +26,8 @@
     <form name="Fagence" id="Fagence"> <!--Id_Agence-->
 
         <div> <center><h2>--AGENCE--</h2></center>
-            <select id='IdAgence' onchange="showAgences(value)">
+            <select id='IdAgence'>
                 <option selected value="">Choisissez votre Agence</option>
-                <option value='001'>Carrefour Banque</option>
-                <option value='002'>BNB Paribas</option>
-                <option value='003'>GMF</option>
             </select>
         </div>
 
