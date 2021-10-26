@@ -58,6 +58,6 @@ class Compte {
 
     // Method
     lastClientAccount() {
-        return this.height * this.width;
+        return this.height * this.width; // dernier compte du client
     }
 }
