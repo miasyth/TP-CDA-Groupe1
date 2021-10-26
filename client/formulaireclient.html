@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="client.js"></script>
 </head>
 <body style="background-color: #bebebe;">
         
@@ -25,18 +24,9 @@
         <div id="head"> <center><h2>--Choix de votre agence--</h2></center>             
             <select id='IdAgence' name="IdAgence">                
                 <option selected value='0'>Choisissez votre agence bancaire : </option>                 
-                <option value='HSBC'>HSBC</option>
-                <option value='Banque Postale'>Banque Postale</option>                                                   
-                <option value='IBM'>IBM</option>                 
-                <option value='Le Credit Lyonnais'>Le Credit Lyonnais</option>                 
-                <option value="Caisse d'épargne">Caisse d'épargne</option>                 
-                <option value='Credit agricole'>Crédit agricole</option>                 
-                <option value='BNP Paribas'>BNP Paribas</option>                 
-                <option value='Hello Bank!'>Hello Bank!</option>                 
-                <option value='Societe generale'>Société générale</option>                 
-                <option value='Axa'>Axa</option>                 
-                <option value='Orange Bank'>Orange Bank</option>                 
-                <option value='Credit mutuelle'>Crédit mutuelle</option>  
+                <option value='HSBC'>HSBC</option>                                               
+                <option value='IBM'>IBM</option>                                              
+                <option value='BNP Paribas'>BNP Paribas</option>                                
             </select>         
         </div>
     </form>
@@ -129,12 +119,12 @@
         
 
         <div>
-          <!--<button type="submit"> --Envoyer-- </button>-->
+            <input type="submit" value="Envoyer"/>
         </div>
     </form>
 
     <div>
-        <input type="button" value="--Créer--" onClick= addClient(Fagence,Fclient)> <!--Creer-->
+        <!--<input type="button" value="--Créer--" onClick= addClient(Fagence,Fclient)> --> <!--Creer-->
     </div>
 
 </body>

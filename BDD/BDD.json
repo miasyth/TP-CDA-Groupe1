@@ -9,7 +9,7 @@
     "Agences": [
         {
             "IdAgence": "001",
-            "nom": "Carrefour Banque",
+            "nom": "HSBC",
             "adresse": "80 avenue de la concorde",
             "ville": "Paris",
             "codePostal": "75000",
@@ -84,7 +84,7 @@
         },
         {
             "IdAgence": "002",
-            "nom": "BNB Paribas",
+            "nom": "IBM",
             "adresse": "84 boulevard du tacos",
             "ville": "Rtila",
             "codePostal": "78459",
@@ -135,7 +135,7 @@
         },
         {
             "IdAgence": "003",
-            "nom": "GMF",
+            "nom": "BNB Paribas",
             "adresse": "17 rue utile",
             "ville": "Nantes",
             "codePostal": "45147",
