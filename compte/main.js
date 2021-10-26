@@ -9,7 +9,7 @@ let getData=(url, cb)=>{ // lecture de BDD
     .then(result => cb(result))
 }
 
-getData(BDDJSON, BDD => { // actions
+getData(BDDJSON, BDD => { // actions sur lecture de BDD
   console.log(BDD.Agences);
   document.querySelector("#a").innerText=BDD._commentaires[0]+"\n";
   document.querySelector("#a").innerText+=BDD._commentaires[3];
@@ -28,7 +28,7 @@ getData(BDDJSON, BDD => { // actions
 // --------------------------------------------------------
 
 // generation liste agences
-getData(BDDJSON, BDD => { // actions
+getData(BDDJSON, BDD => {
 
   BDD.Agences.forEach(currentValue => {
     opt = document.createElement('option');
@@ -42,7 +42,7 @@ getData(BDDJSON, BDD => { // actions
 
 // --------------------------------------------------------
 
-let addCompte=(Fagence,Fclient,Fcompte)=>{ // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
+let addCompte=()=>{ // ajoutera un compte au fichier JSON (mais pour l'instant ne fait que recuperer les donnees)
 
   let IdAgence= document.Fagence.IdAgence.value; // recupere IdAgence
 
