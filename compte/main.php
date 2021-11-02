@@ -1,27 +1,29 @@
 <?php
 
-const BDDJSON= "../BDD/BDD.json"; // permet d'acceder a la base de donnee
+require ("Compte.php");
 
-function jsonToArray($chemin){
-    $str = file_get_contents($chemin);
-    if($str == null){
-        return [];
+require_once ("connexion.php");
+
+@$IdCompte=$_POST["IdCompte"];
+@$Type=$_POST["Type"];
+@$Decouvert=$_POST["Decouvert"];
+@$Solde=$_POST["Solde"];
+@$IdAgence=$_POST["IdAgence"];
+@$IdClient=$_POST["IdClient"];
+@$valider=$_POST["submit"];
+$erreur="";
+
+if(isset($valider)){
+    $sql = "insert into public.utilisateur(id_user,_date,nom,prenom,login,pass)values(nextval('seq_utilisateur'),CURRENT_TIMESTAMP,'".$_POST['nom']."','".$_POST['prenom']."','".$_POST['login']."','".md5($_POST['pwd'])."')";
+    $ret = pg_query($dbconn, $sql);
+    
+    if($ret){
+        echo("Enregistrement reussi!");
+    }else{
+        echo("Il y a eu un probleme...");
     }
-    else{
-        $tab = json_decode($str, true);
-        return $tab;
+
     }
-}
-
-function arrayToJson($chemin, $tab){
-    $data = jsonToArray($chemin);
-    $data = array_merge($data, $tab);
-    $fichier = fopen($chemin, "w");
-    fwrite($fichier, json_encode($data, JSON_PRETTY_PRINT));
-    fclose($fichier);
-}
-
-//echo(print_r(jsonToArray(BDDJSON)));
 
 
 ?>
