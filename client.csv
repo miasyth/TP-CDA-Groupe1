@@ -1,4 +1,5 @@
 "Id Agence";"Id Clients";Nom;Prénom;"Date de naissance";Sexe;Adresse;Ville;"Code Postal";"Tél Port";"Tél Fixe";Mail
+001;GG001003;Gadot;Gal;17/12/1985;F;"25 chemin des paquerrete";Hypres;83540;0674124568;0356789456;galgad@wonder.net
 001;LC001001;Leclerc;Charles;25/12/1998;H;"78 rue de Cannel";Nice;83540;0787946325;0458769542;charlesleclerc@formula1.com
 001;LC001002;"Le Goff";Christophe;25/12/1999;H;"79 rue de Cannel";Amiens;83541;0787946326;0458769543;christophelegoff@gmail.com
 002;CN002001;Cantrelle;Nicolas;25/12/2000;H;"80 rue de Cannel";Lens;83542;0787946327;0458769544;nicolas@hotmail.fr
