@@ -1,6 +1,14 @@
 <?php 
 require ('classclient.php') ;
 
+$host = "localhost";
+$port = "5432";
+$dbname = "Banque";
+$user = "postgres";
+$password = "Lolita62128!";
+$connection_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password}";
+$dbconn = pg_connect($connection_string);
+
 function colorLog($str, $type = 'i'){
     switch ($type) {
         case 'e': //error
@@ -102,8 +110,4 @@ foreach($tab as $key => $val){
 };
 
 
-
 ?>
-
-</body>
-</html>
